@@ -18,13 +18,13 @@ type ColorValue interface {
 
 type ColorValueFunc func(io.Writer) error
 
-func (f ColorValueFunc) Render(w io.Writer) error {
+func (f ColorValueFunc) RenderCSS(w io.Writer) error {
 	return f(w)
 }
 
 func (f ColorValueFunc) String() string {
 	var b strings.Builder
-	_ = f.Render(&b)
+	_ = f.RenderCSS(&b)
 	return b.String()
 }
 

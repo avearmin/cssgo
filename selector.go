@@ -19,13 +19,13 @@ const (
 
 type SelectorNodeFunc func(io.Writer) error
 
-func (s SelectorNodeFunc) Render(w io.Writer) error {
+func (s SelectorNodeFunc) RenderCSS(w io.Writer) error {
 	return s(w)
 }
 
 func (s SelectorNodeFunc) String() string {
 	var b strings.Builder
-	_ = s.Render(&b)
+	_ = s.RenderCSS(&b)
 	return b.String()
 }
 

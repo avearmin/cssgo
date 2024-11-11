@@ -12,13 +12,13 @@ type PropertyNode interface {
 
 type PropertyNodeFunc func(io.Writer) error
 
-func (p PropertyNodeFunc) Render(w io.Writer) error {
+func (p PropertyNodeFunc) RenderCSS(w io.Writer) error {
 	return p(w)
 }
 
 func (p PropertyNodeFunc) String() string {
 	var b strings.Builder
-	_ = p.Render(&b)
+	_ = p.RenderCSS(&b)
 	return b.String()
 }
 
@@ -30,7 +30,7 @@ func Property(name string, value ValueNode) PropertyNodeFunc {
 			return err
 		}
 
-		if err := value.Render(w); err != nil {
+		if err := value.RenderCSS(w); err != nil {
 			return err
 		}
 
@@ -45,7 +45,7 @@ func Property(name string, value ValueNode) PropertyNodeFunc {
 func GroupProps(properties ...PropertyNode) PropertyNodeFunc {
 	return PropertyNodeFunc(func(w io.Writer) error {
 		for _, prop := range properties {
-			if err := prop.Render(w); err != nil {
+			if err := prop.RenderCSS(w); err != nil {
 				return err
 			}
 		}

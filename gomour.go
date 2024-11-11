@@ -6,7 +6,7 @@ import (
 )
 
 type Node interface {
-	Render(w io.Writer) error
+	RenderCSS(w io.Writer) error
 }
 
 type RuleNode interface {
@@ -16,13 +16,13 @@ type RuleNode interface {
 
 type RuleNodeFunc func(io.Writer) error
 
-func (r RuleNodeFunc) Render(w io.Writer) error {
+func (r RuleNodeFunc) RenderCSS(w io.Writer) error {
 	return r(w)
 }
 
 func (r RuleNodeFunc) String() string {
 	var b strings.Builder
-	_ = r.Render(&b)
+	_ = r.RenderCSS(&b)
 	return b.String()
 }
 
@@ -30,7 +30,7 @@ func (r RuleNodeFunc) ruleNode() {}
 
 func Rule(selector SelectorNode, properties ...PropertyNode) RuleNodeFunc {
 	return RuleNodeFunc(func(w io.Writer) error {
-		if err := selector.Render(w); err != nil {
+		if err := selector.RenderCSS(w); err != nil {
 			return err
 		}
 
@@ -39,7 +39,7 @@ func Rule(selector SelectorNode, properties ...PropertyNode) RuleNodeFunc {
 		}
 
 		for _, prop := range properties {
-			if err := prop.Render(w); err != nil {
+			if err := prop.RenderCSS(w); err != nil {
 				return err
 			}
 		}
@@ -50,4 +50,16 @@ func Rule(selector SelectorNode, properties ...PropertyNode) RuleNodeFunc {
 
 		return nil
 	})
+}
+
+type HTMLNodeFunc func(w io.Writer) error
+
+func (h HTMLNodeFunc) Render(w io.Writer) error {
+	return h(w)
+}
+
+func (h HTMLNodeFunc) String() string {
+	var b strings.Builder
+	_ = h.Render(&b)
+	return b.String()
 }
