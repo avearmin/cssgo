@@ -24,7 +24,7 @@ func (r RuleNodeFunc) String() string {
 
 func (r RuleNodeFunc) ruleNode() {}
 
-func Rule(selector SelectorNode, properties ...PropertyNode) RuleNode {
+func Rule(selector SelectorNode, properties ...PropertyNode) RuleNodeFunc {
 	return RuleNodeFunc(func(w io.Writer) error {
 		if err := selector.Render(w); err != nil {
 			return err
