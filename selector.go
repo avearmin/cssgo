@@ -31,460 +31,460 @@ func (s SelectorNodeFunc) String() string {
 
 func (s SelectorNodeFunc) selectorNode() {}
 
-func selector(selectorType selectorType, name string) SelectorNode {
+func selector(selectorType selectorType, name string) SelectorNodeFunc {
 	return SelectorNodeFunc(func(w io.Writer) error {
 		_, err := w.Write([]byte(string(selectorType) + name))
 		return err
 	})
 }
 
-func Class(name string) SelectorNode {
+func Class(name string) SelectorNodeFunc {
 	return selector(classSelectorType, name)
 }
 
-func ID(name string) SelectorNode {
+func ID(name string) SelectorNodeFunc {
 	return selector(idSelectorType, name)
 }
 
-func El(tag string) SelectorNode {
+func El(tag string) SelectorNodeFunc {
 	return SelectorNodeFunc(func(w io.Writer) error {
 		_, err := w.Write([]byte(tag))
 		return err
 	})
 }
 
-func A() SelectorNode {
+func A() SelectorNodeFunc {
 	return El("a")
 }
 
-func Abbr() SelectorNode {
+func Abbr() SelectorNodeFunc {
 	return El("abbr")
 }
 
-func Address() SelectorNode {
+func Address() SelectorNodeFunc {
 	return El("address")
 }
 
-func Area() SelectorNode {
+func Area() SelectorNodeFunc {
 	return El("area")
 }
 
-func Article() SelectorNode {
+func Article() SelectorNodeFunc {
 	return El("article")
 }
 
-func Aside() SelectorNode {
+func Aside() SelectorNodeFunc {
 	return El("aside")
 }
 
-func Audio() SelectorNode {
+func Audio() SelectorNodeFunc {
 	return El("audio")
 }
 
-func B() SelectorNode {
+func B() SelectorNodeFunc {
 	return El("b")
 }
 
-func Base() SelectorNode {
+func Base() SelectorNodeFunc {
 	return El("base")
 }
 
-func Bdi() SelectorNode {
+func Bdi() SelectorNodeFunc {
 	return El("bdi")
 }
 
-func Bdo() SelectorNode {
+func Bdo() SelectorNodeFunc {
 	return El("bdo")
 }
 
-func Blockquote() SelectorNode {
+func Blockquote() SelectorNodeFunc {
 	return El("blockquote")
 }
 
-func Body() SelectorNode {
+func Body() SelectorNodeFunc {
 	return El("body")
 }
 
-func Br() SelectorNode {
+func Br() SelectorNodeFunc {
 	return El("br")
 }
 
-func Button() SelectorNode {
+func Button() SelectorNodeFunc {
 	return El("button")
 }
 
-func Canvas() SelectorNode {
+func Canvas() SelectorNodeFunc {
 	return El("canvas")
 }
 
-func Caption() SelectorNode {
+func Caption() SelectorNodeFunc {
 	return El("caption")
 }
 
-func Cite() SelectorNode {
+func Cite() SelectorNodeFunc {
 	return El("cite")
 }
 
-func Code() SelectorNode {
+func Code() SelectorNodeFunc {
 	return El("code")
 }
 
-func Col() SelectorNode {
+func Col() SelectorNodeFunc {
 	return El("col")
 }
 
-func Colgroup() SelectorNode {
+func Colgroup() SelectorNodeFunc {
 	return El("colgroup")
 }
 
-func Data() SelectorNode {
+func Data() SelectorNodeFunc {
 	return El("data")
 }
 
-func Datalist() SelectorNode {
+func Datalist() SelectorNodeFunc {
 	return El("datalist")
 }
 
-func Dd() SelectorNode {
+func Dd() SelectorNodeFunc {
 	return El("dd")
 }
 
-func Del() SelectorNode {
+func Del() SelectorNodeFunc {
 	return El("del")
 }
 
-func Details() SelectorNode {
+func Details() SelectorNodeFunc {
 	return El("details")
 }
 
-func Dfn() SelectorNode {
+func Dfn() SelectorNodeFunc {
 	return El("dfn")
 }
 
-func Dialog() SelectorNode {
+func Dialog() SelectorNodeFunc {
 	return El("dialog")
 }
 
-func Div() SelectorNode {
+func Div() SelectorNodeFunc {
 	return El("div")
 }
 
-func Dl() SelectorNode {
+func Dl() SelectorNodeFunc {
 	return El("dl")
 }
 
-func Dt() SelectorNode {
+func Dt() SelectorNodeFunc {
 	return El("dt")
 }
 
-func Em() SelectorNode {
+func Em() SelectorNodeFunc {
 	return El("em")
 }
 
-func Embed() SelectorNode {
+func Embed() SelectorNodeFunc {
 	return El("embed")
 }
 
-func Fieldset() SelectorNode {
+func Fieldset() SelectorNodeFunc {
 	return El("fieldset")
 }
 
-func Figcaption() SelectorNode {
+func Figcaption() SelectorNodeFunc {
 	return El("figcaption")
 }
 
-func Figure() SelectorNode {
+func Figure() SelectorNodeFunc {
 	return El("figure")
 }
 
-func Footer() SelectorNode {
+func Footer() SelectorNodeFunc {
 	return El("footer")
 }
 
-func Form() SelectorNode {
+func Form() SelectorNodeFunc {
 	return El("form")
 }
 
-func H1() SelectorNode {
+func H1() SelectorNodeFunc {
 	return El("h1")
 }
 
-func H2() SelectorNode {
+func H2() SelectorNodeFunc {
 	return El("h2")
 }
 
-func H3() SelectorNode {
+func H3() SelectorNodeFunc {
 	return El("h3")
 }
 
-func H4() SelectorNode {
+func H4() SelectorNodeFunc {
 	return El("h4")
 }
 
-func H5() SelectorNode {
+func H5() SelectorNodeFunc {
 	return El("h5")
 }
 
-func H6() SelectorNode {
+func H6() SelectorNodeFunc {
 	return El("h6")
 }
 
-func Head() SelectorNode {
+func Head() SelectorNodeFunc {
 	return El("head")
 }
 
-func Header() SelectorNode {
+func Header() SelectorNodeFunc {
 	return El("header")
 }
 
-func Hr() SelectorNode {
+func Hr() SelectorNodeFunc {
 	return El("hr")
 }
 
-func Html() SelectorNode {
+func Html() SelectorNodeFunc {
 	return El("html")
 }
 
-func I() SelectorNode {
+func I() SelectorNodeFunc {
 	return El("i")
 }
 
-func Iframe() SelectorNode {
+func Iframe() SelectorNodeFunc {
 	return El("iframe")
 }
 
-func Img() SelectorNode {
+func Img() SelectorNodeFunc {
 	return El("img")
 }
 
-func Input() SelectorNode {
+func Input() SelectorNodeFunc {
 	return El("input")
 }
 
-func Ins() SelectorNode {
+func Ins() SelectorNodeFunc {
 	return El("ins")
 }
 
-func Kbd() SelectorNode {
+func Kbd() SelectorNodeFunc {
 	return El("kbd")
 }
 
-func Label() SelectorNode {
+func Label() SelectorNodeFunc {
 	return El("label")
 }
 
-func Legend() SelectorNode {
+func Legend() SelectorNodeFunc {
 	return El("legend")
 }
 
-func Li() SelectorNode {
+func Li() SelectorNodeFunc {
 	return El("li")
 }
 
-func Link() SelectorNode {
+func Link() SelectorNodeFunc {
 	return El("link")
 }
 
-func Main() SelectorNode {
+func Main() SelectorNodeFunc {
 	return El("main")
 }
 
-func Map() SelectorNode {
+func Map() SelectorNodeFunc {
 	return El("map")
 }
 
-func Mark() SelectorNode {
+func Mark() SelectorNodeFunc {
 	return El("mark")
 }
 
-func Meta() SelectorNode {
+func Meta() SelectorNodeFunc {
 	return El("meta")
 }
 
-func Meter() SelectorNode {
+func Meter() SelectorNodeFunc {
 	return El("meter")
 }
 
-func Nav() SelectorNode {
+func Nav() SelectorNodeFunc {
 	return El("nav")
 }
 
-func Noscript() SelectorNode {
+func Noscript() SelectorNodeFunc {
 	return El("noscript")
 }
 
-func Object() SelectorNode {
+func Object() SelectorNodeFunc {
 	return El("object")
 }
 
-func Ol() SelectorNode {
+func Ol() SelectorNodeFunc {
 	return El("ol")
 }
 
-func Optgroup() SelectorNode {
+func Optgroup() SelectorNodeFunc {
 	return El("optgroup")
 }
 
-func Option() SelectorNode {
+func Option() SelectorNodeFunc {
 	return El("option")
 }
 
-func Output() SelectorNode {
+func Output() SelectorNodeFunc {
 	return El("output")
 }
 
-func P() SelectorNode {
+func P() SelectorNodeFunc {
 	return El("p")
 }
 
-func Param() SelectorNode {
+func Param() SelectorNodeFunc {
 	return El("param")
 }
 
-func Picture() SelectorNode {
+func Picture() SelectorNodeFunc {
 	return El("picture")
 }
 
-func Pre() SelectorNode {
+func Pre() SelectorNodeFunc {
 	return El("pre")
 }
 
-func Progress() SelectorNode {
+func Progress() SelectorNodeFunc {
 	return El("progress")
 }
 
-func Q() SelectorNode {
+func Q() SelectorNodeFunc {
 	return El("q")
 }
 
-func Rp() SelectorNode {
+func Rp() SelectorNodeFunc {
 	return El("rp")
 }
 
-func Rt() SelectorNode {
+func Rt() SelectorNodeFunc {
 	return El("rt")
 }
 
-func Ruby() SelectorNode {
+func Ruby() SelectorNodeFunc {
 	return El("ruby")
 }
 
-func S() SelectorNode {
+func S() SelectorNodeFunc {
 	return El("s")
 }
 
-func Samp() SelectorNode {
+func Samp() SelectorNodeFunc {
 	return El("samp")
 }
 
-func Script() SelectorNode {
+func Script() SelectorNodeFunc {
 	return El("script")
 }
 
-func Section() SelectorNode {
+func Section() SelectorNodeFunc {
 	return El("section")
 }
 
-func Select() SelectorNode {
+func Select() SelectorNodeFunc {
 	return El("select")
 }
 
-func Small() SelectorNode {
+func Small() SelectorNodeFunc {
 	return El("small")
 }
 
-func Source() SelectorNode {
+func Source() SelectorNodeFunc {
 	return El("source")
 }
 
-func Span() SelectorNode {
+func Span() SelectorNodeFunc {
 	return El("span")
 }
 
-func Strong() SelectorNode {
+func Strong() SelectorNodeFunc {
 	return El("strong")
 }
 
-func Style() SelectorNode {
+func Style() SelectorNodeFunc {
 	return El("style")
 }
 
-func Sub() SelectorNode {
+func Sub() SelectorNodeFunc {
 	return El("sub")
 }
 
-func Summary() SelectorNode {
+func Summary() SelectorNodeFunc {
 	return El("summary")
 }
 
-func Sup() SelectorNode {
+func Sup() SelectorNodeFunc {
 	return El("sup")
 }
 
-func Table() SelectorNode {
+func Table() SelectorNodeFunc {
 	return El("table")
 }
 
-func Tbody() SelectorNode {
+func Tbody() SelectorNodeFunc {
 	return El("tbody")
 }
 
-func Td() SelectorNode {
+func Td() SelectorNodeFunc {
 	return El("td")
 }
 
-func Template() SelectorNode {
+func Template() SelectorNodeFunc {
 	return El("template")
 }
 
-func Textarea() SelectorNode {
+func Textarea() SelectorNodeFunc {
 	return El("textarea")
 }
 
-func Tfoot() SelectorNode {
+func Tfoot() SelectorNodeFunc {
 	return El("tfoot")
 }
 
-func Th() SelectorNode {
+func Th() SelectorNodeFunc {
 	return El("th")
 }
 
-func Thead() SelectorNode {
+func Thead() SelectorNodeFunc {
 	return El("thead")
 }
 
-func Time() SelectorNode {
+func Time() SelectorNodeFunc {
 	return El("time")
 }
 
-func Title() SelectorNode {
+func Title() SelectorNodeFunc {
 	return El("title")
 }
 
-func Tr() SelectorNode {
+func Tr() SelectorNodeFunc {
 	return El("tr")
 }
 
-func Track() SelectorNode {
+func Track() SelectorNodeFunc {
 	return El("track")
 }
 
-func U() SelectorNode {
+func U() SelectorNodeFunc {
 	return El("u")
 }
 
-func Ul() SelectorNode {
+func Ul() SelectorNodeFunc {
 	return El("ul")
 }
 
-func Var() SelectorNode {
+func Var() SelectorNodeFunc {
 	return El("var")
 }
 
-func Video() SelectorNode {
+func Video() SelectorNodeFunc {
 	return El("video")
 }
 
-func Wbr() SelectorNode {
+func Wbr() SelectorNodeFunc {
 	return El("wbr")
 }
