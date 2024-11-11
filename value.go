@@ -31,7 +31,7 @@ func (f ColorValueFunc) String() string {
 func (f ColorValueFunc) valueNode()  {}
 func (f ColorValueFunc) colorValue() {}
 
-func Hex(hexdec int) ColorValue {
+func Hex(hexdec int) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		hexStr := fmt.Sprintf("#%06x", hexdec)
 		_, err := w.Write([]byte(hexStr))
@@ -39,7 +39,7 @@ func Hex(hexdec int) ColorValue {
 	})
 }
 
-func RGB(r, g, b int) ColorValue {
+func RGB(r, g, b int) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		rgbStr := fmt.Sprintf("rgb(%d, %d, %d)", r, g, b)
 		_, err := w.Write([]byte(rgbStr))
@@ -47,61 +47,61 @@ func RGB(r, g, b int) ColorValue {
 	})
 }
 
-func Color(color string) ColorValue {
+func Color(color string) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		_, err := w.Write([]byte(color))
 		return err
 	})
 }
 
-func Black() ColorValue {
+func Black() ColorValueFunc {
 	return Color("black")
 }
 
-func White() ColorValue {
+func White() ColorValueFunc {
 	return Color("white")
 }
 
-func Red() ColorValue {
+func Red() ColorValueFunc {
 	return Color("red")
 }
 
-func Green() ColorValue {
+func Green() ColorValueFunc {
 	return Color("green")
 }
 
-func Blue() ColorValue {
+func Blue() ColorValueFunc {
 	return Color("blue")
 }
 
-func Yellow() ColorValue {
+func Yellow() ColorValueFunc {
 	return Color("yellow")
 }
 
-func Cyan() ColorValue {
+func Cyan() ColorValueFunc {
 	return Color("cyan")
 }
 
-func Magenta() ColorValue {
+func Magenta() ColorValueFunc {
 	return Color("magenta")
 }
 
-func Gray() ColorValue {
+func Gray() ColorValueFunc {
 	return Color("gray")
 }
 
-func Orange() ColorValue {
+func Orange() ColorValueFunc {
 	return Color("orange")
 }
 
-func Purple() ColorValue {
+func Purple() ColorValueFunc {
 	return Color("purple")
 }
 
-func Pink() ColorValue {
+func Pink() ColorValueFunc {
 	return Color("pink")
 }
 
-func Brown() ColorValue {
+func Brown() ColorValueFunc {
 	return Color("brown")
 }
