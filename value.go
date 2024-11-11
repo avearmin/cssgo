@@ -53,3 +53,55 @@ func Color(color string) ColorValue {
 		return err
 	})
 }
+
+func Black() ColorValue {
+	return Color("black")
+}
+
+func White() ColorValue {
+	return Color("white")
+}
+
+func Red() ColorValue {
+	return Color("red")
+}
+
+func Green() ColorValue {
+	return Color("green")
+}
+
+func Blue() ColorValue {
+	return Color("blue")
+}
+
+func Yellow() ColorValue {
+	return Color("yellow")
+}
+
+func Cyan() ColorValue {
+	return Color("cyan")
+}
+
+func Magenta() ColorValue {
+	return Color("magenta")
+}
+
+func Gray() ColorValue {
+	return Color("gray")
+}
+
+func Orange() ColorValue {
+	return Color("orange")
+}
+
+func Purple() ColorValue {
+	return Color("purple")
+}
+
+func Pink() ColorValue {
+	return Color("pink")
+}
+
+func Brown() ColorValue {
+	return Color("brown")
+}
