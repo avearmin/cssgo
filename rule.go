@@ -26,22 +26,24 @@ func (r RuleNodeFunc) ruleNode() {}
 
 func Rule(selector SelectorNode, properties ...PropertyNode) RuleNode {
 	return RuleNodeFunc(func(w io.Writer) error {
-		return renderRule(w, selector, properties...)
+		if err := selector.Render(w); err != nil {
+			return err
+		}
+
+		if _, err := w.Write([]byte("{")); err != nil {
+			return err
+		}
+
+		for _, prop := range properties {
+			if err := prop.Render(w); err != nil {
+				return err
+			}
+		}
+
+		if _, err := w.Write([]byte("}")); err != nil {
+			return err
+		}
+
+		return nil
 	})
-}
-
-func renderRule(w io.Writer, selector SelectorNode, properties ...PropertyNode) error {
-	sw := &statefulWriter{w: w}
-
-	renderSelector(sw, selector)
-
-	sw.Write([]byte("{"))
-
-	for _, prop := range properties {
-		renderProperty(sw, prop)
-	}
-
-	sw.Write([]byte("}"))
-
-	return sw.err
 }
