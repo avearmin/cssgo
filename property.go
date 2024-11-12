@@ -42,17 +42,6 @@ func Property(name string, value ValueNode) PropertyNodeFunc {
 	})
 }
 
-func GroupProps(properties ...PropertyNode) PropertyNodeFunc {
-	return PropertyNodeFunc(func(w io.Writer) error {
-		for _, prop := range properties {
-			if err := prop.RenderCSS(w); err != nil {
-				return err
-			}
-		}
-		return nil
-	})
-}
-
 func TextColor(value ColorValue) PropertyNodeFunc {
 	return Property("color", value)
 }

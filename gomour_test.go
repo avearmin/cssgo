@@ -4,24 +4,41 @@ import "testing"
 
 func TestRule(t *testing.T) {
 	tests := []struct {
+		name  string
 		input RuleNodeFunc
 		want  string
 	}{
 		{
-			input: Rule(
-				Class("foo"),
-				TextColor(Red()),
+			name: "simple class selector",
+			input: Class("foo").Props(
+				TextColor(Color("red")),
 				BackgroundColor(Hex(0xffffff)),
 			),
 			want: ".foo{color:red;background-color:#ffffff;}",
 		},
+		{
+			name: "comma sep class selector",
+			input: Class("foo").Or(El("p")).Props(
+				TextColor(Color("red")),
+				BackgroundColor(Hex(0xffffff)),
+			),
+			want: ".foo, p{color:red;background-color:#ffffff;}",
+		},
+		{
+			name: "complex comma sep class selector",
+			input: Class("foo").Or(El("p").Or(El("a"))).Or(ID("baz")).Props(
+				TextColor(Color("red")),
+				BackgroundColor(Hex(0xffffff)),
+			),
+			want: ".foo, p, a, #baz{color:red;background-color:#ffffff;}",
+		},
 	}
 
-	for i, test := range tests {
+	for _, test := range tests {
 		func(t2 *testing.T) {
 			got := test.input.String()
 			if got != test.want {
-				t2.Fatalf("TESTCASE %d: FAIL\ngot: %s != want: %s", i, got, test.want)
+				t2.Fatalf("TESTCASE %s: FAIL\ngot: %s != want: %s", test.name, got, test.want)
 			}
 		}(t)
 	}
