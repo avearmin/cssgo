@@ -15,13 +15,6 @@ type ClassIDSelectorNode interface {
 	classIDNode()
 }
 
-type selectorType string
-
-const (
-	classSelectorType selectorType = "."
-	idSelectorType    selectorType = "#"
-)
-
 type SelectorNodeFunc func(io.Writer) error
 
 func (s SelectorNodeFunc) RenderCSS(w io.Writer) error {
@@ -74,24 +67,27 @@ func (s SelectorNodeFunc) Props(properties ...PropertyNode) RuleNodeFunc {
 	})
 }
 
-func selector(selectorType selectorType, name string) SelectorNodeFunc {
+func selector(selectorLiteral, name string) SelectorNodeFunc {
 	return SelectorNodeFunc(func(w io.Writer) error {
-		_, err := w.Write([]byte(string(selectorType) + name))
+		if selectorLiteral != "" {
+			if _, err := w.Write([]byte(selectorLiteral)); err != nil {
+				return err
+			}
+		}
+
+		_, err := w.Write([]byte(name))
 		return err
 	})
 }
 
 func Class(name string) SelectorNodeFunc {
-	return selector(classSelectorType, name)
+	return selector(".", name)
 }
 
 func ID(name string) SelectorNodeFunc {
-	return selector(idSelectorType, name)
+	return selector("#", name)
 }
 
-func El(tag string) SelectorNodeFunc {
-	return SelectorNodeFunc(func(w io.Writer) error {
-		_, err := w.Write([]byte(tag))
-		return err
-	})
+func El(name string) SelectorNodeFunc {
+	return selector("", name)
 }
