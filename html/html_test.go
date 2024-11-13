@@ -28,11 +28,14 @@ func TestStyles(t *testing.T) {
 		},
 		{
 			name: "simple class selector in style attr",
-			input: Style(
-				gomour.TextColor(gomour.Color("red")),
-				gomour.BackgroundColor(gomour.Hex(0xffffff)),
+			input: ghtml.Div(
+				Style(
+					gomour.TextColor(gomour.Color("red")),
+					gomour.BackgroundColor(gomour.Hex(0xffffff)),
+				),
+				gomponents.Text("hello world"),
 			),
-			want: "style=\"color:red;background-color:#ffffff;\"",
+			want: "<div style=\"color:red;background-color:#ffffff;\">hello world</div>",
 		},
 	}
 

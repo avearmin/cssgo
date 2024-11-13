@@ -57,7 +57,7 @@ func (a AttrNodeFunc) Type() gomponents.NodeType {
 
 func Style(props ...gomour.PropertyNode) AttrNodeFunc {
 	return AttrNodeFunc(func(w io.Writer) error {
-		if _, err := w.Write([]byte("style=\"")); err != nil {
+		if _, err := w.Write([]byte(" style=\"")); err != nil {
 			return err
 		}
 
