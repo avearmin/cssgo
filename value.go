@@ -47,6 +47,14 @@ func RGB(r, g, b int) ColorValueFunc {
 	})
 }
 
+func RGBA(r, g, b, int, a float64) ColorValueFunc {
+	return ColorValueFunc(func(w io.Writer) error {
+		rgbaStr := fmt.Sprintf("rgba(%d, %d, %d, %f)", r, g, b, a)
+		_, err := w.Write([]byte(rgbaStr))
+		return err
+	})
+}
+
 func Color(color string) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		_, err := w.Write([]byte(color))

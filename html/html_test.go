@@ -16,7 +16,7 @@ func TestStyles(t *testing.T) {
 	}{
 		{
 			name: "simple class selector in style element",
-			input: ghtml.Div(
+			input: ghtml.Head(
 				StyleEl(
 					gomour.Class("foo").Props(
 						gomour.TextColor(gomour.Color("red")),
@@ -24,7 +24,7 @@ func TestStyles(t *testing.T) {
 					),
 				),
 			),
-			want: "<div><style>.foo{color:red;background-color:#ffffff;}</style></div>",
+			want: "<head><style>.foo{color:red;background-color:#ffffff;}</style></head>",
 		},
 		{
 			name: "simple class selector in style attr",
