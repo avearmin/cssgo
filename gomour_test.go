@@ -13,24 +13,27 @@ func TestRule(t *testing.T) {
 			input: Class("foo").Props(
 				TextColor(Color("red")),
 				BackgroundColor(Hex(0xffffff)),
+				FontSize(REM(40)),
 			),
-			want: ".foo{color:red;background-color:#ffffff;}",
+			want: ".foo{color:red;background-color:#ffffff;font-size:40rem;}",
 		},
 		{
 			name: "comma sep class selector",
 			input: Class("foo").Or(El("p")).Props(
 				TextColor(Color("red")),
 				BackgroundColor(Hex(0xffffff)),
+				FontSize(EM(50)),
 			),
-			want: ".foo, p{color:red;background-color:#ffffff;}",
+			want: ".foo, p{color:red;background-color:#ffffff;font-size:50em;}",
 		},
 		{
 			name: "complex comma sep class selector",
 			input: Class("foo").Or(El("p").Or(El("a"))).Or(ID("baz")).Props(
 				TextColor(HSL(400, .844, .95777)),
 				BackgroundColor(HSLA(200, .70, .60, 1.5)),
+				FontSize(PX(20)),
 			),
-			want: ".foo, p, a, #baz{color:hsl(360, 84%, 96%);background-color:hsla(200, 70%, 60%, 1.0);}",
+			want: ".foo, p, a, #baz{color:hsl(360, 84%, 96%);background-color:hsla(200, 70%, 60%, 1.0);font-size:20px;}",
 		},
 	}
 

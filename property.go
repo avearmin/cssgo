@@ -49,3 +49,7 @@ func TextColor(value ColorValue) PropertyNodeFunc {
 func BackgroundColor(value ColorValue) PropertyNodeFunc {
 	return Property("background-color", value)
 }
+
+func FontSize(value SizeValue) PropertyNodeFunc {
+	return Property("font-size", value)
+}
