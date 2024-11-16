@@ -27,10 +27,10 @@ func TestRule(t *testing.T) {
 		{
 			name: "complex comma sep class selector",
 			input: Class("foo").Or(El("p").Or(El("a"))).Or(ID("baz")).Props(
-				TextColor(Color("red")),
+				TextColor(HSL(400, .844, .95777)),
 				BackgroundColor(Hex(0xffffff)),
 			),
-			want: ".foo, p, a, #baz{color:red;background-color:#ffffff;}",
+			want: ".foo, p, a, #baz{color:hsl(360, 84%, 96%);background-color:#ffffff;}",
 		},
 	}
 
