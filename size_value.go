@@ -1,8 +1,8 @@
 package gomour
 
 import (
+	"fmt"
 	"io"
-	"strconv"
 	"strings"
 )
 
@@ -26,65 +26,62 @@ func (f SizeValueFunc) String() string {
 func (f SizeValueFunc) valueNode() {}
 func (f SizeValueFunc) sizeValue() {}
 
-func size(n int, unit string) SizeValueFunc {
+func size(value float64, unit string) SizeValueFunc {
 	return SizeValueFunc(func(w io.Writer) error {
-
-		if _, err := w.Write([]byte(strconv.Itoa(n))); err != nil {
-			return err
-		}
-		_, err := w.Write([]byte(unit))
+		floatStr := fmt.Sprintf("%f%%s", value, unit)
+		_, err := w.Write([]byte(floatStr))
 		return err
 	})
 }
 
-func CM(n int) SizeValueFunc {
-	return size(n, "cm")
+func CM(value float64) SizeValueFunc {
+	return size(value, "cm")
 }
 
-func MM(n int) SizeValueFunc {
-	return size(n, "mm")
+func MM(value float64) SizeValueFunc {
+	return size(value, "mm")
 }
 
-func IN(n int) SizeValueFunc {
-	return size(n, "in")
+func IN(value float64) SizeValueFunc {
+	return size(value, "in")
 }
 
-func PX(n int) SizeValueFunc {
-	return size(n, "px")
+func PX(value float64) SizeValueFunc {
+	return size(value, "px")
 }
 
-func PT(n int) SizeValueFunc {
-	return size(n, "pt")
+func PT(value float64) SizeValueFunc {
+	return size(value, "pt")
 }
 
-func PC(n int) SizeValueFunc {
-	return size(n, "pc")
+func PC(value float64) SizeValueFunc {
+	return size(value, "pc")
 }
 
-func EM(n int) SizeValueFunc {
-	return size(n, "em")
+func EM(value float64) SizeValueFunc {
+	return size(value, "em")
 }
 
-func REM(n int) SizeValueFunc {
-	return size(n, "rem")
+func REM(value float64) SizeValueFunc {
+	return size(value, "rem")
 }
 
-func VW(n int) SizeValueFunc {
-	return size(n, "vw")
+func VW(value float64) SizeValueFunc {
+	return size(value, "vw")
 }
 
-func VH(n int) SizeValueFunc {
-	return size(n, "vh")
+func VH(value float64) SizeValueFunc {
+	return size(value, "vh")
 }
 
-func Per(n int) SizeValueFunc {
-	return size(n, "%")
+func PCT(value float64) SizeValueFunc {
+	return size(value, "%")
 }
 
-func VMIN(n int) SizeValueFunc {
-	return size(n, "vmin")
+func VMIN(value float64) SizeValueFunc {
+	return size(value, "vmin")
 }
 
-func VMAX(n int) SizeValueFunc {
-	return size(n, "vmax")
+func VMAX(value float64) SizeValueFunc {
+	return size(value, "vmax")
 }
