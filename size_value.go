@@ -1,8 +1,8 @@
 package gomour
 
 import (
-	"fmt"
 	"io"
+	"strconv"
 	"strings"
 )
 
@@ -28,8 +28,11 @@ func (f SizeValueFunc) sizeValue() {}
 
 func size(value float64, unit string) SizeValueFunc {
 	return SizeValueFunc(func(w io.Writer) error {
-		floatStr := fmt.Sprintf("%f%%s", value, unit)
-		_, err := w.Write([]byte(floatStr))
+		floatStr := strconv.FormatFloat(value, 'f', -1, 64)
+		if _, err := w.Write([]byte(floatStr)); err != nil {
+			return err
+		}
+		_, err := w.Write([]byte(unit))
 		return err
 	})
 }
