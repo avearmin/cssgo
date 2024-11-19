@@ -24,14 +24,16 @@ func (p PropertyNodeFunc) String() string {
 
 func (p PropertyNodeFunc) propertyNode() {}
 
-func Property(name string, value ValueNode) PropertyNodeFunc {
+func Property(name string, values ...ValueNode) PropertyNodeFunc {
 	return PropertyNodeFunc(func(w io.Writer) error {
 		if _, err := w.Write([]byte(name + ":")); err != nil {
 			return err
 		}
 
-		if err := value.RenderCSS(w); err != nil {
-			return err
+		for _, value := range values {
+			if err := value.RenderCSS(w); err != nil {
+				return err
+			}
 		}
 
 		if _, err := w.Write([]byte(";")); err != nil {
