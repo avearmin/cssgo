@@ -31,6 +31,10 @@ func Property(name string, values ...ValueNode) PropertyNodeFunc {
 		}
 
 		for _, value := range values {
+			if value == nil {
+				continue
+			}
+			w.Write([]byte(" "))
 			if err := value.RenderCSS(w); err != nil {
 				return err
 			}
@@ -60,8 +64,8 @@ func Margin(value SizeValue) PropertyNodeFunc {
 	return Property("margin", value)
 }
 
-func Padding(value SizeValue) PropertyNodeFunc {
-	return Property("padding", value)
+func Padding(value1, value2, value3, value4 SizeValue) PropertyNodeFunc {
+	return Property("padding", value1, value2, value3, value4)
 }
 
 func Height(value SizeValue) PropertyNodeFunc {
