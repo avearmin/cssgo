@@ -53,3 +53,19 @@ func BackgroundColor(value ColorValue) PropertyNodeFunc {
 func FontSize(value SizeValue) PropertyNodeFunc {
 	return Property("font-size", value)
 }
+
+func Margin(value SizeValue) PropertyNodeFunc {
+	return Property("margin", value)
+}
+
+func Padding(value SizeValue) PropertyNodeFunc {
+	return Property("padding", value)
+}
+
+func Height(value SizeValue) PropertyNodeFunc {
+	return Property("height", value)
+}
+
+func Width(value SizeValue) PropertyNodeFunc {
+	return Property("width", value)
+}
