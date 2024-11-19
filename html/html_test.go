@@ -24,7 +24,7 @@ func TestStyles(t *testing.T) {
 					),
 				),
 			),
-			want: "<head><style>.foo{color:red;background-color:#ffffff;}</style></head>",
+			want: "<head><style>.foo{color: red;background-color: #ffffff;}</style></head>",
 		},
 		{
 			name: "simple class selector in style attr",
@@ -35,7 +35,7 @@ func TestStyles(t *testing.T) {
 				),
 				gomponents.Text("hello world"),
 			),
-			want: "<div style=\"color:red;background-color:#ffffff;\">hello world</div>",
+			want: "<div style=\"color: red;background-color: #ffffff;\">hello world</div>",
 		},
 	}
 

@@ -15,7 +15,7 @@ func TestRule(t *testing.T) {
 				BackgroundColor(Hex(0xffffff)),
 				FontSize(REM(40)),
 			),
-			want: ".foo{color:red;background-color:#ffffff;font-size:40rem;}",
+			want: ".foo{color: red;background-color: #ffffff;font-size: 40rem;}",
 		},
 		{
 			name: "comma sep class selector",
@@ -24,7 +24,7 @@ func TestRule(t *testing.T) {
 				BackgroundColor(Hex(0xffffff)),
 				FontSize(EM(50)),
 			),
-			want: ".foo, p{color:red;background-color:#ffffff;font-size:50em;}",
+			want: ".foo, p{color: red;background-color: #ffffff;font-size: 50em;}",
 		},
 		{
 			name: "complex comma sep class selector",
@@ -33,7 +33,7 @@ func TestRule(t *testing.T) {
 				BackgroundColor(HSLA(200, .70, .60, 1.5)),
 				FontSize(PX(20)),
 			),
-			want: ".foo, p, a, #baz{color:hsl(360, 84%, 96%);background-color:hsla(200, 70%, 60%, 1.0);font-size:20px;}",
+			want: ".foo, p, a, #baz{color: hsl(360, 84%, 96%);background-color: hsla(200, 70%, 60%, 1.0);font-size: 20px;}",
 		},
 	}
 
