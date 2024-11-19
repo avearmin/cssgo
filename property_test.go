@@ -24,6 +24,35 @@ func RunTests(t *testing.T, tests ...test) {
 	}
 }
 
+func TestTextColor(t *testing.T) {
+	RunTests(t,
+		test{"named color",
+			TextColor(Color("red")),
+			"color: red;",
+		},
+		test{
+			"rgb color",
+			TextColor(RGB(40, 50, 60)),
+			"color: rgb(40, 50, 60);",
+		},
+		test{
+			"hex color",
+			TextColor(Hex(0xffffff)),
+			"color: #ffffff;",
+		},
+		test{
+			"hsl color",
+			TextColor(HSL(200, .5, .5)),
+			"color: hsl(200, 50%, 50%);",
+		},
+		test{
+			"hsla color",
+			TextColor(HSLA(200, .5, .5, .5)),
+			"color: hsla(200, 50%, 50%, 0.5);",
+		},
+	)
+}
+
 func TestPadding(t *testing.T) {
 	RunTests(t,
 		test{
