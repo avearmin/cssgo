@@ -53,6 +53,35 @@ func TestTextColor(t *testing.T) {
 	)
 }
 
+func TestBackgroundColor(t *testing.T) {
+	RunTests(t,
+		test{"named color",
+			BackgroundColor(Color("red")),
+			"background-color: red;",
+		},
+		test{
+			"rgb color",
+			BackgroundColor(RGB(40, 50, 60)),
+			"background-color: rgb(40, 50, 60);",
+		},
+		test{
+			"hex color",
+			BackgroundColor(Hex(0xffffff)),
+			"background-color: #ffffff;",
+		},
+		test{
+			"hsl color",
+			BackgroundColor(HSL(200, .5, .5)),
+			"background-color: hsl(200, 50%, 50%);",
+		},
+		test{
+			"hsla color",
+			BackgroundColor(HSLA(200, .5, .5, .5)),
+			"background-color: hsla(200, 50%, 50%, 0.5);",
+		},
+	)
+}
+
 func TestPadding(t *testing.T) {
 	RunTests(t,
 		test{
