@@ -60,8 +60,8 @@ func FontSize(value SizeValue) PropertyNodeFunc {
 	return Property("font-size", value)
 }
 
-func Margin(value SizeValue) PropertyNodeFunc {
-	return Property("margin", value)
+func Margin(value1, value2, value3, value4 SizeValue) PropertyNodeFunc {
+	return Property("margin", value1, value2, value3, value4)
 }
 
 func Padding(value1, value2, value3, value4 SizeValue) PropertyNodeFunc {
