@@ -82,6 +82,76 @@ func TestBackgroundColor(t *testing.T) {
 	)
 }
 
+func TestFontSize(t *testing.T) {
+	RunTests(t,
+		test{
+			"fontsize with px value",
+			FontSize(PX(10)),
+			"font-size: 10px;",
+		},
+		test{
+			"fontsize with percent value",
+			FontSize(PCT(50)),
+			"font-size: 50%;",
+		},
+		test{
+			"fontsize with em value",
+			FontSize(EM(1.5)),
+			"font-size: 1.5em;",
+		},
+		test{
+			"fontsize with rem value",
+			FontSize(REM(2)),
+			"font-size: 2rem;",
+		},
+		test{
+			"fontsize with in value",
+			FontSize(IN(1)),
+			"font-size: 1in;",
+		},
+		test{
+			"fontsize with cm value",
+			FontSize(CM(2.54)),
+			"font-size: 2.54cm;",
+		},
+		test{
+			"fontsize with mm value",
+			FontSize(MM(10)),
+			"font-size: 10mm;",
+		},
+		test{
+			"fontsize with pt value",
+			FontSize(PT(12)),
+			"font-size: 12pt;",
+		},
+		test{
+			"fontsize with pc value",
+			FontSize(PC(1)),
+			"font-size: 1pc;",
+		},
+		test{
+			"fontsize with vw value",
+			FontSize(VW(25.5)),
+			"font-size: 25.5vw;",
+		},
+		test{
+			"fontsize with vh value",
+			FontSize(VH(10)),
+			"font-size: 10vh;",
+		},
+		test{
+			"fontsize with vmin value",
+			FontSize(VMIN(5)),
+			"font-size: 5vmin;",
+		},
+		test{
+			"fontsize with vmax value",
+			FontSize(VMAX(8)),
+			"font-size: 8vmax;",
+		},
+	)
+}
+
 func TestPadding(t *testing.T) {
 	RunTests(t,
 		test{
