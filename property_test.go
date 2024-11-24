@@ -156,3 +156,28 @@ func TestPadding(t *testing.T) {
 		},
 	)
 }
+
+func TestMargin(t *testing.T) {
+	RunTests(t,
+		test{
+			"margin with 1 value",
+			Margin(PX(10), nil, nil, nil),
+			"margin: 10px;",
+		},
+		test{
+			"margin with 2 values",
+			Margin(PX(10), PX(20), nil, nil),
+			"margin: 10px 20px;",
+		},
+		test{
+			"margin with 3 values",
+			Margin(PX(10), PX(20), PX(30), nil),
+			"margin: 10px 20px 30px;",
+		},
+		test{
+			"margin with 4 values",
+			Margin(PX(10), PX(20), PX(30), PX(40)),
+			"margin: 10px 20px 30px 40px;",
+		},
+	)
+}
