@@ -181,3 +181,63 @@ func TestMargin(t *testing.T) {
 		},
 	)
 }
+
+func TestHeight(t *testing.T) {
+	RunTests(t,
+		test{
+			"height: 100px",
+			Height(PX(100)),
+			"height: 100px;",
+		},
+		test{
+			"height: 50%",
+			Height(PCT(50)),
+			"height: 50%;",
+		},
+		test{
+			"height: 10em",
+			Height(EM(10)),
+			"height: 10em;",
+		},
+	)
+}
+
+func TestWidth(t *testing.T) {
+	RunTests(t,
+		test{
+			"width: 200px",
+			Width(PX(200)),
+			"width: 200px;",
+		},
+		test{
+			"width: 75%",
+			Width(PCT(75)),
+			"width: 75%;",
+		},
+		test{
+			"width: 5rem",
+			Width(REM(5)),
+			"width: 5rem;",
+		},
+	)
+}
+
+func TestBorder(t *testing.T) {
+	RunTests(t,
+		test{
+			"border: 5px solid red;",
+			Border(PX(5), Solid, Color("red")),
+			"border: 5px solid red;",
+		},
+		test{
+			"border: dotted #ffffff;",
+			Border(nil, Dotted, Hex(0xffffff)),
+			"border: dotted #ffffff;",
+		},
+		test{
+			"border: dashed;",
+			Border(nil, Dashed, nil),
+			"border: dashed;",
+		},
+	)
+}

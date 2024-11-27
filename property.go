@@ -75,3 +75,7 @@ func Height(value SizeValue) PropertyNodeFunc {
 func Width(value SizeValue) PropertyNodeFunc {
 	return Property("width", value)
 }
+
+func Border(width SizeValue, style BorderStyleValue, color ColorValue) PropertyNodeFunc {
+	return Property("border", width, style, color)
+}
