@@ -22,12 +22,12 @@ func TestTextColor(t *testing.T) {
 		},
 		test{
 			"hsl color",
-			TextColor(HSL(200, .5, .5)),
+			TextColor(HSL(200, 50, 50)),
 			"color: hsl(200, 50%, 50%);",
 		},
 		test{
 			"hsla color",
-			TextColor(HSLA(200, .5, .5, .5)),
+			TextColor(HSLA(200, 50, 50, .5)),
 			"color: hsla(200, 50%, 50%, 0.5);",
 		},
 	)
@@ -51,12 +51,12 @@ func TestBackgroundColor(t *testing.T) {
 		},
 		test{
 			"hsl color",
-			BackgroundColor(HSL(200, .5, .5)),
+			BackgroundColor(HSL(200, 50, 50)),
 			"background-color: hsl(200, 50%, 50%);",
 		},
 		test{
 			"hsla color",
-			BackgroundColor(HSLA(200, .5, .5, .5)),
+			BackgroundColor(HSLA(200, 50, 50, .5)),
 			"background-color: hsla(200, 50%, 50%, 0.5);",
 		},
 	)

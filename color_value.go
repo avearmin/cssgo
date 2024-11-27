@@ -198,61 +198,23 @@ func RGB(r, g, b int) ColorValueFunc {
 
 func RGBA(r, g, b int, alpha float64) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
-		rgbaStr := fmt.Sprintf("rgba(%d, %d, %d, %f)", r, g, b, alpha)
+		rgbaStr := fmt.Sprintf("rgba(%d, %d, %d, %g)", r, g, b, alpha)
 		_, err := w.Write([]byte(rgbaStr))
 		return err
 	})
 }
 
-func HSL(hue uint, saturation, lightness float64) ColorValueFunc {
-	if hue > 360 {
-		hue = 360
-	}
-	if saturation < 0.0 {
-		saturation = 0.0
-	}
-	if saturation > 1.0 {
-		saturation = 1.0
-	}
-	if lightness < 0.0 {
-		lightness = 0.0
-	}
-	if lightness > 1.0 {
-		lightness = 1.0
-	}
-
+func HSL(hue int, saturation, lightness float64) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
-		hslStr := fmt.Sprintf("hsl(%d, %.0f%%, %.0f%%)", hue, saturation*100, lightness*100)
+		hslStr := fmt.Sprintf("hsl(%d, %g%%, %g%%)", hue, saturation, lightness)
 		_, err := w.Write([]byte(hslStr))
 		return err
 	})
 }
 
-func HSLA(hue uint, saturation, lightness, alpha float64) ColorValueFunc {
-	if hue > 360 {
-		hue = 360
-	}
-	if saturation < 0.0 {
-		saturation = 0.0
-	}
-	if saturation > 1.0 {
-		saturation = 1.0
-	}
-	if lightness < 0.0 {
-		lightness = 0.0
-	}
-	if lightness > 1.0 {
-		lightness = 1.0
-	}
-	if alpha < 0.0 {
-		alpha = 0.0
-	}
-	if alpha > 1.0 {
-		alpha = 1.0
-	}
-
+func HSLA(hue int, saturation, lightness, alpha float64) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
-		hslaStr := fmt.Sprintf("hsla(%d, %.0f%%, %.0f%%, %.1f)", hue, saturation*100, lightness*100, alpha)
+		hslaStr := fmt.Sprintf("hsla(%d, %g%%, %g%%, %g)", hue, saturation, lightness, alpha)
 		_, err := w.Write([]byte(hslaStr))
 		return err
 	})
