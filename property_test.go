@@ -227,7 +227,7 @@ func TestBorder(t *testing.T) {
 		test{
 			"border: 5px solid green;",
 			Border(PX(5), Solid, Green),
-			"border: 5px solid red;",
+			"border: 5px solid green;",
 		},
 		test{
 			"border: dotted #ffffff;",

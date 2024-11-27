@@ -19,18 +19,18 @@ func TestStyles(t *testing.T) {
 			input: ghtml.Head(
 				StyleEl(
 					gomour.Class("foo").Props(
-						gomour.TextColor(gomour.Color("red")),
+						gomour.TextColor(gomour.Blue),
 						gomour.BackgroundColor(gomour.Hex(0xffffff)),
 					),
 				),
 			),
-			want: "<head><style>.foo{color: red;background-color: #ffffff;}</style></head>",
+			want: "<head><style>.foo{color: blue;background-color: #ffffff;}</style></head>",
 		},
 		{
 			name: "simple class selector in style attr",
 			input: ghtml.Div(
 				Style(
-					gomour.TextColor(gomour.Color("red")),
+					gomour.TextColor(gomour.Red),
 					gomour.BackgroundColor(gomour.Hex(0xffffff)),
 				),
 				gomponents.Text("hello world"),

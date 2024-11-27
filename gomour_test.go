@@ -11,7 +11,7 @@ func TestRule(t *testing.T) {
 		{
 			name: "simple class selector",
 			input: Class("foo").Props(
-				TextColor(Color("red")),
+				TextColor(Red),
 				BackgroundColor(Hex(0xffffff)),
 				FontSize(REM(40)),
 			),
@@ -20,7 +20,7 @@ func TestRule(t *testing.T) {
 		{
 			name: "comma sep class selector",
 			input: Class("foo").Or(El("p")).Props(
-				TextColor(Color("red")),
+				TextColor(Red),
 				BackgroundColor(Hex(0xffffff)),
 				FontSize(EM(50)),
 			),
