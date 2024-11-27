@@ -7,7 +7,7 @@ import (
 func TestTextColor(t *testing.T) {
 	RunTests(t,
 		test{"named color",
-			TextColor(Color("red")),
+			TextColor(Red),
 			"color: red;",
 		},
 		test{
@@ -36,7 +36,7 @@ func TestTextColor(t *testing.T) {
 func TestBackgroundColor(t *testing.T) {
 	RunTests(t,
 		test{"named color",
-			BackgroundColor(Color("red")),
+			BackgroundColor(Red),
 			"background-color: red;",
 		},
 		test{
@@ -225,8 +225,8 @@ func TestWidth(t *testing.T) {
 func TestBorder(t *testing.T) {
 	RunTests(t,
 		test{
-			"border: 5px solid red;",
-			Border(PX(5), Solid, Color("red")),
+			"border: 5px solid green;",
+			Border(PX(5), Solid, Green),
 			"border: 5px solid red;",
 		},
 		test{
