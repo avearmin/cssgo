@@ -34,7 +34,9 @@ func Property(name string, values ...ValueNode) PropertyNodeFunc {
 			if value == nil {
 				continue
 			}
-			w.Write([]byte(" "))
+			if _, err := w.Write([]byte(" ")); err != nil {
+				return err
+			}
 			if err := value.RenderCSS(w); err != nil {
 				return err
 			}
