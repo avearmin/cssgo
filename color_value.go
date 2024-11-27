@@ -6,11 +6,15 @@ import (
 	"strings"
 )
 
+// ColorValue defines an interface for types representing CSS-compatible color values.
+// It ensures that any implementing type can be rendered as valid CSS.
 type ColorValue interface {
 	ValueNode
 	colorValue()
 }
 
+// namedColor represents a predefined CSS named color (e.g., "blue", "red").
+// These named colors follow the CSS standard.
 type namedColor string
 
 const (
@@ -165,6 +169,8 @@ func (n namedColor) RenderCSS(w io.Writer) error {
 func (n namedColor) valueNode()  {}
 func (n namedColor) colorValue() {}
 
+// ColorValueFunc is a function type used to define custom color values
+// (e.g., RGB, RGBA, Hex). It implements the ColorValue interface.
 type ColorValueFunc func(io.Writer) error
 
 func (f ColorValueFunc) RenderCSS(w io.Writer) error {
@@ -180,6 +186,9 @@ func (f ColorValueFunc) String() string {
 func (f ColorValueFunc) valueNode()  {}
 func (f ColorValueFunc) colorValue() {}
 
+// Hex generates a hexadecimal color value (e.g., #ffffff).
+// Parameter:
+// - `hexdec` (int): An integer representing the hexadecimal color value (e.g., 0xffffff).
 func Hex(hexdec int) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		hexStr := fmt.Sprintf("#%06x", hexdec)
@@ -188,6 +197,11 @@ func Hex(hexdec int) ColorValueFunc {
 	})
 }
 
+// RGB generates an RGB color value (e.g., rgb(255, 255, 255)).
+// Parameters:
+// - `r` (int): Red component (0–255).
+// - `g` (int): Green component (0–255).
+// - `b` (int): Blue component (0–255).
 func RGB(r, g, b int) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		rgbStr := fmt.Sprintf("rgb(%d, %d, %d)", r, g, b)
@@ -196,6 +210,12 @@ func RGB(r, g, b int) ColorValueFunc {
 	})
 }
 
+// RGBA generates an RGBA color value (e.g., rgba(255, 255, 255, 0.5)).
+// Parameters:
+// - `r` (int): Red component (0–255).
+// - `g` (int): Green component (0–255).
+// - `b` (int): Blue component (0–255).
+// - `alpha` (float64): Opacity (0.0–1.0).
 func RGBA(r, g, b int, alpha float64) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		rgbaStr := fmt.Sprintf("rgba(%d, %d, %d, %g)", r, g, b, alpha)
@@ -204,6 +224,21 @@ func RGBA(r, g, b int, alpha float64) ColorValueFunc {
 	})
 }
 
+// HSL generates an HSL color value in the format `hsl(hue, saturation%, lightness%)`.
+// Parameters:
+// - `hue` (int): Represents the color angle in degrees. Valid CSS values include:
+//   - Any integer value (e.g., -30, 0, 360, 450).
+//   - Negative values wrap counter-clockwise (e.g., -30 is equivalent to 330).
+//   - Values greater than 360 wrap clockwise (e.g., 450 is equivalent to 90).
+//
+// - `saturation` (float64): Represents the saturation as a percentage (e.g., `100.0` for `100%`).
+//   - Values must be non-negative.
+//
+// - `lightness` (float64): Represents the lightness as a percentage (e.g., `50.5` for `50.5%`).
+//   - Values must be non-negative.
+//
+// Returns:
+// - A `ColorValueFunc` that outputs the HSL value as valid CSS.
 func HSL(hue int, saturation, lightness float64) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		hslStr := fmt.Sprintf("hsl(%d, %g%%, %g%%)", hue, saturation, lightness)
@@ -212,6 +247,22 @@ func HSL(hue int, saturation, lightness float64) ColorValueFunc {
 	})
 }
 
+// HSLA generates an HSLA color value in the format `hsla(hue, saturation%, lightness%, alpha)`.
+// Parameters:
+// - `hue` (int): Represents the color angle in degrees. Valid CSS values include:
+//   - Any integer value (e.g., -30, 0, 360, 450).
+//   - Negative values wrap counter-clockwise (e.g., -30 is equivalent to 330).
+//   - Values greater than 360 wrap clockwise (e.g., 450 is equivalent to 90).
+//
+// - `saturation` (float64): Represents the saturation as a percentage (e.g., `100.0` for `100%`).
+//   - Values must be non-negative.
+//
+// - `lightness` (float64): Represents the lightness as a percentage (e.g., `50.5` for `50.5%`).
+//   - Values must be non-negative.
+//
+// - `alpha` (float64): Represents the opacity of the color as a normalized value between `0.0` (fully transparent) and `1.0` (fully opaque).
+// Returns:
+// - A `ColorValueFunc` that outputs the HSLA value as valid CSS.
 func HSLA(hue int, saturation, lightness, alpha float64) ColorValueFunc {
 	return ColorValueFunc(func(w io.Writer) error {
 		hslaStr := fmt.Sprintf("hsla(%d, %g%%, %g%%, %g)", hue, saturation, lightness, alpha)
