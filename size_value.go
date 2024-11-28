@@ -3,7 +3,6 @@ package gomour
 import (
 	"io"
 	"strconv"
-	"strings"
 )
 
 type SizeValue interface {
@@ -11,80 +10,69 @@ type SizeValue interface {
 	sizeValue()
 }
 
-type SizeValueFunc func(w io.Writer) error
+type Size string
 
-func (f SizeValueFunc) RenderCSS(w io.Writer) error {
-	return f(w)
+func (s Size) RenderCSS(w io.Writer) error {
+	_, err := w.Write([]byte(s))
+	return err
 }
 
-func (f SizeValueFunc) String() string {
-	var b strings.Builder
-	_ = f.RenderCSS(&b)
-	return b.String()
+func (s Size) valueNode() {}
+func (s Size) sizeValue() {}
+
+func size(value float64, unit string) Size {
+	floatStr := strconv.FormatFloat(value, 'f', -1, 64)
+	return Size(floatStr + unit)
 }
 
-func (f SizeValueFunc) valueNode() {}
-func (f SizeValueFunc) sizeValue() {}
-
-func size(value float64, unit string) SizeValueFunc {
-	return SizeValueFunc(func(w io.Writer) error {
-		floatStr := strconv.FormatFloat(value, 'f', -1, 64)
-		if _, err := w.Write([]byte(floatStr)); err != nil {
-			return err
-		}
-		_, err := w.Write([]byte(unit))
-		return err
-	})
-}
-
-func CM(value float64) SizeValueFunc {
+func CM(value float64) Size {
 	return size(value, "cm")
 }
 
-func MM(value float64) SizeValueFunc {
+func MM(value float64) Size {
 	return size(value, "mm")
 }
 
-func IN(value float64) SizeValueFunc {
+func IN(value float64) Size {
 	return size(value, "in")
 }
 
-func PX(value float64) SizeValueFunc {
+func PX(value float64) Size {
 	return size(value, "px")
 }
 
-func PT(value float64) SizeValueFunc {
+func PT(value float64) Size {
 	return size(value, "pt")
 }
 
-func PC(value float64) SizeValueFunc {
+func PC(value float64) Size {
 	return size(value, "pc")
 }
 
-func EM(value float64) SizeValueFunc {
+func EM(value float64) Size {
 	return size(value, "em")
 }
 
-func REM(value float64) SizeValueFunc {
+func REM(value float64) Size {
 	return size(value, "rem")
 }
 
-func VW(value float64) SizeValueFunc {
+func VW(value float64) Size {
 	return size(value, "vw")
 }
 
-func VH(value float64) SizeValueFunc {
+func VH(value float64) Size {
 	return size(value, "vh")
 }
 
-func PCT(value float64) SizeValueFunc {
+func PCT(value float64) Size {
 	return size(value, "%")
 }
 
-func VMIN(value float64) SizeValueFunc {
+func VMIN(value float64) Size {
 	return size(value, "vmin")
 }
 
-func VMAX(value float64) SizeValueFunc {
+func VMAX(value float64) Size {
 	return size(value, "vmax")
 }
