@@ -7,23 +7,23 @@ type BorderStyleValue interface {
 	borderStyleValue()
 }
 
-type borderStyle string
+type BorderStyle string
 
 const (
-	Solid  borderStyle = "solid"
-	Dotted borderStyle = "dotted"
-	Dashed borderStyle = "dashed"
-	Double borderStyle = "double"
-	Groove borderStyle = "groove"
-	Ridge  borderStyle = "ridge"
-	Inset  borderStyle = "inset"
-	Outset borderStyle = "outset"
+	Solid  BorderStyle = "solid"
+	Dotted BorderStyle = "dotted"
+	Dashed BorderStyle = "dashed"
+	Double BorderStyle = "double"
+	Groove BorderStyle = "groove"
+	Ridge  BorderStyle = "ridge"
+	Inset  BorderStyle = "inset"
+	Outset BorderStyle = "outset"
 )
 
-func (b borderStyle) RenderCSS(w io.Writer) error {
+func (b BorderStyle) RenderCSS(w io.Writer) error {
 	_, err := w.Write([]byte(b))
 	return err
 }
 
-func (b borderStyle) valueNode()        {}
-func (b borderStyle) borderStyleValue() {}
+func (b BorderStyle) valueNode()        {}
+func (b BorderStyle) borderStyleValue() {}
