@@ -51,9 +51,9 @@ Before diving into examples, let’s look at the required imports:
 ```go
 import (
 	g "maragu.dev/gomponents" // Gomponents
-	ghtml "maragu.dev/gomponents/html" // HTML elements from Gomponents
-    cssgo "github.com/avearmin/cssgo" // CSSGo for CSS styling
-	csshtml "github.com/avearmin/cssgo/html" // Custom HTML helpers for CSSGo 	
+	ghtml "maragu.dev/gomponents/html" // HTML elements from Gomponents 
+	c "github.com/avearmin/cssgo" // CSSGo for CSS styling
+	chtml "github.com/avearmin/cssgo/html" // Custom HTML helpers for CSSGo 	
 )
 ```
 
@@ -65,20 +65,20 @@ import (
 ```go
 func CardComponent(title, content string) g.Node {
 	return ghtml.Div(
-		csshtml.Style(
-			cssgo.Width(cssgo.PX(300)),
-			cssgo.Height(cssgo.PX(200)),
-			cssgo.BackgroundColor(cssgo.White),
-			cssgo.Border(cssgo.PX(2), cssgo.Solid, cssgo.Hex(0xcccccc)),
-			cssgo.Padding(cssgo.PX(20), nil, nil, nil),
+		chtml.Style(
+			c.Width(c.PX(300)),
+			c.Height(c.PX(200)),
+			c.BackgroundColor(c.White),
+			c.Border(c.PX(2), c.Solid, c.Hex(0xcccccc)),
+			c.Padding(c.PX(20), nil, nil, nil),
 		),
 		ghtml.H2(
 			g.Text(title),
-			csshtml.Style(cssgo.TextColor(cssgo.Blue)),
+			chtml.Style(c.TextColor(c.Blue)),
 		),
 		ghtml.P(
 			g.Text(content),
-			csshtml.Style(cssgo.TextColor(cssgo.Gray)),
+			c.Style(c.TextColor(c.Gray)),
 		),
 	)
 }
@@ -115,10 +115,10 @@ Define reusable CSS rules colocated with your components.
 func StyledButtonComponent() g.Node {
 	return csshtml.StyleEl(
 		// Define button styles
-		cssgo.El("button").Or(cssgo.Class("foo")).Props(
-			cssgo.BackgroundColor(cssgo.Blue),
-			cssgo.TextColor(cssgo.White),
-			cssgo.Padding(cssgo.PX(10), cssgo.PX(20), nil, nil),
+		c.El("button").Or(c.Class("foo")).Props(
+			c.BackgroundColor(c.Blue),
+			c.TextColor(c.White),
+			c.Padding(c.PX(10), c.PX(20), nil, nil),
 		),
 	)
 }
@@ -145,16 +145,16 @@ Reuse grouped properties for consistency across components.
 
 ```go
 func CardComponent(title, content string) g.Node {
-	cardStyle := cssgo.GroupProps(
-		cssgo.Width(cssgo.PX(300)),
-		cssgo.Height(cssgo.PX(200)),
-		cssgo.BackgroundColor(cssgo.White),
-		cssgo.Border(cssgo.PX(2), cssgo.Solid, cssgo.Hex(0xcccccc)),
-		cssgo.Padding(cssgo.PX(20), nil, nil, nil),
+	cardStyle := c.GroupProps(
+		c.Width(c.PX(300)),
+		c.Height(cssgo.PX(200)),
+		c.BackgroundColor(c.White),
+		c.Border(c.PX(2), c.Solid, c.Hex(0xcccccc)),
+		c.Padding(c.PX(20), nil, nil, nil),
 	)
 
 	return ghtml.Div(
-		csshtml.Style(cardStyle),
+		chtml.Style(cardStyle),
 		ghtml.H2(
 			g.Text(title),
 		),
