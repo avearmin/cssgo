@@ -126,7 +126,7 @@ func StyledButtonComponent(label string) g.Node {
 
 Generated CSS:
 ```css
-button.foo {
+button, .foo {
     background-color: blue;
     color: white;
     padding: 10px 20px;
