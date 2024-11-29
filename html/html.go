@@ -1,7 +1,7 @@
 package html
 
 import (
-	"github.com/avearmin/gomour"
+	"github.com/avearmin/cssgo"
 	"io"
 	"maragu.dev/gomponents"
 	"strings"
@@ -23,7 +23,7 @@ func (e ElNodeFunc) Type() gomponents.NodeType {
 	return gomponents.ElementType
 }
 
-func StyleEl(rules ...gomour.RuleNode) ElNodeFunc {
+func StyleEl(rules ...cssgo.RuleNode) ElNodeFunc {
 	return ElNodeFunc(func(w io.Writer) error {
 		if _, err := w.Write([]byte("<style>")); err != nil {
 			return err
@@ -55,7 +55,7 @@ func (a AttrNodeFunc) Type() gomponents.NodeType {
 	return gomponents.AttributeType
 }
 
-func Style(props ...gomour.PropertyNode) AttrNodeFunc {
+func Style(props ...cssgo.PropertyNode) AttrNodeFunc {
 	return AttrNodeFunc(func(w io.Writer) error {
 		if _, err := w.Write([]byte(" style=\"")); err != nil {
 			return err

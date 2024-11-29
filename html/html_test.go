@@ -1,7 +1,7 @@
 package html
 
 import (
-	"github.com/avearmin/gomour"
+	"github.com/avearmin/cssgo"
 	"maragu.dev/gomponents"
 	ghtml "maragu.dev/gomponents/html"
 	"strings"
@@ -18,9 +18,9 @@ func TestStyles(t *testing.T) {
 			name: "simple class selector in style element",
 			input: ghtml.Head(
 				StyleEl(
-					gomour.Class("foo").Props(
-						gomour.TextColor(gomour.Blue),
-						gomour.BackgroundColor(gomour.Hex(0xffffff)),
+					cssgo.Class("foo").Props(
+						cssgo.TextColor(cssgo.Blue),
+						cssgo.BackgroundColor(cssgo.Hex(0xffffff)),
 					),
 				),
 			),
@@ -30,8 +30,8 @@ func TestStyles(t *testing.T) {
 			name: "simple class selector in style attr",
 			input: ghtml.Div(
 				Style(
-					gomour.TextColor(gomour.Red),
-					gomour.BackgroundColor(gomour.Hex(0xffffff)),
+					cssgo.TextColor(cssgo.Red),
+					cssgo.BackgroundColor(cssgo.Hex(0xffffff)),
 				),
 				gomponents.Text("hello world"),
 			),

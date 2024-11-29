@@ -1,4 +1,4 @@
-package gomour
+package cssgo
 
 import (
 	"testing"
