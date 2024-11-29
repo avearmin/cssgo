@@ -63,7 +63,7 @@ func ButtonComponent(label string) g.Node {
 			P4(),         // Tailwind `p-4`
 			RoundedMd(),  // Tailwind `rounded-md`
 		),
-		ghtml.Text(label),
+		g.Text(label),
 	)
 }
 
@@ -76,11 +76,11 @@ func CardComponent(title, content string) g.Node {
 			c.BackgroundColor(c.White),
 		),
 		ghtml.H2(
-			ghtml.Text(title),
+			g.Text(title),
 			chtml.Style(c.TextColor(c.Blue)),
 		),
 		ghtml.P(
-			ghtml.Text(content),
+			g.Text(content),
 			chtml.Style(c.TextColor(c.Gray)),
 		),
 		ButtonComponent("Learn More"),
