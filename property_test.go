@@ -241,3 +241,16 @@ func TestBorder(t *testing.T) {
 		},
 	)
 }
+
+func TestGroupProps(t *testing.T) {
+	RunTests(t,
+		test{"border background-color color",
+			GroupProps(
+				Border(PX(10), Inset, Magenta),
+				BackgroundColor(Black),
+				TextColor(Red),
+			),
+			"border: 10px inset magenta;background-color: black;color: red;",
+		},
+	)
+}
