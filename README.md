@@ -73,11 +73,11 @@ func CardComponent(title, content string) g.Node {
 			cssgo.Padding(cssgo.PX(20), nil, nil, nil),
 		),
 		ghtml.H2(
-			ghtml.Text(title),
+			g.Text(title),
 			csshtml.Style(cssgo.TextColor(cssgo.Blue)),
 		),
 		ghtml.P(
-			ghtml.Text(content),
+			g.Text(content),
 			csshtml.Style(cssgo.TextColor(cssgo.Gray)),
 		),
 	)
@@ -88,14 +88,14 @@ func CardComponent(title, content string) g.Node {
 ```go
 func CardComponent(title, content string) g.Node {
 	return ghtml.Div(
-		ghtml.Attr("style", `width: 300px; height: 200px; background-color: white; border: 2px solid #cccccc; padding: 20px;`),
+		g.Attr("style", `width: 300px; height: 200px; background-color: white; border: 2px solid #cccccc; padding: 20px;`),
 		ghtml.H2(
-			ghtml.Text(title),
-			ghtml.Attr("style", `color: blue;`),
+			g.Text(title),
+			g.Attr("style", `color: blue;`),
 		),
 		ghtml.P(
-			ghtml.Text(content),
-			ghtml.Attr("style", `color: gray;`),
+			g.Text(content),
+			g.Attr("style", `color: gray;`),
 		),
 	)
 }
@@ -112,7 +112,7 @@ func CardComponent(title, content string) g.Node {
 Define reusable CSS rules colocated with your components.
 
 ```go
-func StyledButtonComponent(label string) g.Node {
+func StyledButtonComponent() g.Node {
 	return csshtml.StyleEl(
 		// Define button styles
 		cssgo.El("button").Or(cssgo.Class("foo")).Props(
@@ -156,10 +156,10 @@ func CardComponent(title, content string) g.Node {
 	return ghtml.Div(
 		csshtml.Style(cardStyle),
 		ghtml.H2(
-			ghtml.Text(title),
+			g.Text(title),
 		),
 		ghtml.P(
-			ghtml.Text(content),
+			g.Text(content),
 		),
 	)
 }
