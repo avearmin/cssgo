@@ -1,7 +1,3 @@
-Here’s the updated README, replacing **Gomour** with **CSSGo** and adjusting imports, examples, and naming conventions accordingly:
-
----
-
 # CSSGo
 
 **CSSGo** is a Go-native, type-safe CSS library inspired by [Elm CSS](https://package.elm-lang.org/packages/rtfeldman/elm-css/latest/). Just as Elm CSS integrates seamlessly with Elm’s HTML package, CSSGo integrates with [Gomponents](https://github.com/maragudk/gomponents), enabling developers to create modular, reusable CSS directly in Go.
