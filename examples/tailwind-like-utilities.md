@@ -101,7 +101,7 @@ Generated HTML for the button:
 
 Generated HTML for the card:
 ```html
-<div style="width: 300px; height: 200px; padding: 8px; border-radius: 6px; background-color: white;">
+<div style="width: 13rem; height: 13rem; padding: 8px; border-radius: 6px; background-color: white;">
     <h2 style="color: blue;">Title</h2>
     <p style="color: gray;">Content</p>
     <button style="background-color: blue; color: white; padding: 16px; border-radius: 6px;">
