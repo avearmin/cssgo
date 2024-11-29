@@ -1,22 +1,26 @@
-# Gomour
-
-**Gomour** is a Go-native, type-safe CSS library inspired by [Elm CSS](https://package.elm-lang.org/packages/rtfeldman/elm-css/latest/). Just as Elm CSS integrates seamlessly with Elm’s HTML package, Gomour integrates with [Gomponents](https://github.com/maragudk/gomponents), enabling developers to create modular, reusable CSS directly in Go.
-
-Gomour brings the power of type-safe CSS into the Go ecosystem, allowing you to write styles alongside your components while ensuring correctness and maintainability.
+Here’s the updated README, replacing **Gomour** with **CSSGo** and adjusting imports, examples, and naming conventions accordingly:
 
 ---
 
-## **Why Gomour?**
+# CSSGo
+
+**CSSGo** is a Go-native, type-safe CSS library inspired by [Elm CSS](https://package.elm-lang.org/packages/rtfeldman/elm-css/latest/). Just as Elm CSS integrates seamlessly with Elm’s HTML package, CSSGo integrates with [Gomponents](https://github.com/maragudk/gomponents), enabling developers to create modular, reusable CSS directly in Go.
+
+CSSGo brings the power of type-safe CSS into the Go ecosystem, allowing you to write styles alongside your components while ensuring correctness and maintainability.
+
+---
+
+## **Why CSSGo?**
 
 Writing CSS in Go comes with challenges:
 - Inline styles often lack structure, leading to duplication and hard-to-maintain code.
 - String-based CSS is prone to typos and errors (e.g., `colro: blie;`).
 - CSS files disconnected from components can create context-switching and modularity issues.
 
-Inspired by **Elm CSS**, Gomour solves these problems by:
+Inspired by **Elm CSS**, CSSGo solves these problems by:
 - **Ensuring Type Safety**: Only valid CSS properties and values can be used, reducing runtime errors.
 - **Encouraging Modularity**: Keep styles close to your components, promoting reuse and reducing duplication.
-- **Integrating Seamlessly**: Just as Elm CSS works with Elm's HTML package, Gomour works effortlessly with Gomponents.
+- **Integrating Seamlessly**: Just as Elm CSS works with Elm's HTML package, CSSGo works effortlessly with Gomponents.
 
 ---
 
@@ -31,10 +35,10 @@ Inspired by **Elm CSS**, Gomour solves these problems by:
 
 ## **Installation**
 
-Install Gomour via `go get`:
+Install CSSGo via `go get`:
 
 ```bash
-go get github.com/avearmin/gomour
+go get github.com/avearmin/cssgo
 ```
 
 ---
@@ -47,9 +51,9 @@ Before diving into examples, let’s look at the required imports:
 ```go
 import (
 	g "maragu.dev/gomponents" // Gomponents
-	ghtml "maragu.dev/gomponents/html" // HTML elements from gomponents
-    gcss "github.com/avearmin/gomour"// Gomour for CSS styling
-	gmhtml "github.com/avearmin/gomour/html" // Custom HTML helpers for Gomour 	
+	ghtml "maragu.dev/gomponents/html" // HTML elements from Gomponents
+    cssgo "github.com/avearmin/cssgo" // CSSGo for CSS styling
+	csshtml "github.com/avearmin/cssgo/html" // Custom HTML helpers for CSSGo 	
 )
 ```
 
@@ -57,30 +61,30 @@ import (
 
 ### **1. Inline Styles with Gomponents**
 
-#### **With Gomour**
+#### **With CSSGo**
 ```go
 func CardComponent(title, content string) g.Node {
 	return ghtml.Div(
-		gmhtml.Style(
-			gcss.Width(gcss.PX(300)),
-			gcss.Height(gcss.PX(200)),
-			gcss.BackgroundColor(gcss.White),
-			gcss.Border(gcss.PX(2), gcss.Solid, gcss.Hex(0xcccccc)),
-			gcss.Padding(gcss.PX(20), nil, nil, nil),
+		csshtml.Style(
+			cssgo.Width(cssgo.PX(300)),
+			cssgo.Height(cssgo.PX(200)),
+			cssgo.BackgroundColor(cssgo.White),
+			cssgo.Border(cssgo.PX(2), cssgo.Solid, cssgo.Hex(0xcccccc)),
+			cssgo.Padding(cssgo.PX(20), nil, nil, nil),
 		),
 		ghtml.H2(
 			ghtml.Text(title),
-			gmhtml.Style(gcss.TextColor(gcss.Blue)),
+			csshtml.Style(cssgo.TextColor(cssgo.Blue)),
 		),
 		ghtml.P(
 			ghtml.Text(content),
-			gmhtml.Style(gcss.TextColor(gcss.Gray)),
+			csshtml.Style(cssgo.TextColor(cssgo.Gray)),
 		),
 	)
 }
 ```
 
-#### **Without Gomour**
+#### **Without CSSGo**
 ```go
 func CardComponent(title, content string) g.Node {
 	return ghtml.Div(
@@ -97,9 +101,9 @@ func CardComponent(title, content string) g.Node {
 }
 ```
 
-**Why Gomour?**
+**Why CSSGo?**
 - Reduce human error with type-safe properties and values.
-- Modularize reusable constants like `gomour.White` and `gomour.PX(20)`.
+- Modularize reusable constants like `cssgo.White` and `cssgo.PX(20)`.
 
 ---
 
@@ -109,13 +113,12 @@ Define reusable CSS rules colocated with your components.
 
 ```go
 func StyledButtonComponent(label string) g.Node {
-	return gmhtml.StyleEl(
-			// Define button styles
-			gcss.El("button").Or(gcss.Class("foo")).Props(
-				gcss.BackgroundColor(gcss.Blue),
-				gcss.TextColor(gcss.White),
-				gcss.Padding(gcss.PX(10), gcss.PX(20), nil, nil),
-			),
+	return csshtml.StyleEl(
+		// Define button styles
+		cssgo.El("button").Or(cssgo.Class("foo")).Props(
+			cssgo.BackgroundColor(cssgo.Blue),
+			cssgo.TextColor(cssgo.White),
+			cssgo.Padding(cssgo.PX(10), cssgo.PX(20), nil, nil),
 		),
 	)
 }
@@ -123,14 +126,14 @@ func StyledButtonComponent(label string) g.Node {
 
 Generated CSS:
 ```css
-button, .foo {
+button.foo {
     background-color: blue;
     color: white;
     padding: 10px 20px;
 }
 ```
 
-**Why Gomour?**
+**Why CSSGo?**
 - Simplifies the use of comma-separated selectors with `Or`.
 - Keeps CSS colocated with the components they affect.
 
@@ -142,16 +145,16 @@ Reuse grouped properties for consistency across components.
 
 ```go
 func CardComponent(title, content string) g.Node {
-	cardStyle := gcss.GroupProps(
-		gcss.Width(gomour.PX(300)),
-		gcss.Height(gomour.PX(200)),
-		gcss.BackgroundColor(gomour.White),
-		gcss.Border(gomour.PX(2), gomour.Solid, gomour.Hex(0xcccccc)),
-		gcss.Padding(gomour.PX(20), nil, nil, nil),
+	cardStyle := cssgo.GroupProps(
+		cssgo.Width(cssgo.PX(300)),
+		cssgo.Height(cssgo.PX(200)),
+		cssgo.BackgroundColor(cssgo.White),
+		cssgo.Border(cssgo.PX(2), cssgo.Solid, cssgo.Hex(0xcccccc)),
+		cssgo.Padding(cssgo.PX(20), nil, nil, nil),
 	)
 
-	return g.Div(
-		gmhtml.Style(cardStyle),
+	return ghtml.Div(
+		csshtml.Style(cardStyle),
 		ghtml.H2(
 			ghtml.Text(title),
 		),
@@ -174,4 +177,4 @@ func CardComponent(title, content string) g.Node {
 
 ## **Contributing**
 
-In the future I'd like to open this up to contributions, but as of now I am still ironing out quirks.
+In the future, I'd like to open this up to contributions, but as of now, I am still ironing out quirks.

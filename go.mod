@@ -1,4 +1,4 @@
-module github.com/avearmin/gomour
+module github.com/avearmin/cssgo
 
 go 1.22.0
 
