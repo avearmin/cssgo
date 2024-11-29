@@ -47,6 +47,7 @@ func TextWhite() c.Property {
 	return c.TextColor(c.White)
 }
 
+// Width/Height utility
 func Size52() c.Property {
     return c.GroupProps(
         c.Width(REM(13)),
@@ -115,5 +116,3 @@ Generated HTML for the card:
 - **Dynamic and Reusable Utilities**: Utilities like `P4()` and `BgBlue500()` mimic Tailwind classes and can be customized dynamically in Go.
 - **Colocated Styles**: Styles are colocated with components, improving code cohesion.
 - **Type Safety**: Go ensures that invalid values or typos are caught at compile time.
-
-Would you like to expand the utilities further or refine the example? 🚀

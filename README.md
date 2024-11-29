@@ -29,6 +29,7 @@ Inspired by **Elm CSS**, CSSGo solves these problems by:
 - **Type-Safe Properties**: Define styles with confidence—invalid values are caught at compile time.
 - **Reusable Values**: Use predefined constants for colors, border styles, and more.
 - **Inline and Scoped Styles**: Create both inline styles and reusable `<style>` rules.
+- **Utility-First Styling**: Replicate TailwindCSS-like utilities in Go, ensuring full flexibility. [Learn More](./examples/tailwind-like-utilities)
 - **Gomponents Integration**: Designed to work natively with Gomponents for a seamless developer experience.
 
 ---
