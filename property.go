@@ -10,22 +10,22 @@ type PropertyNode interface {
 	propertyNode()
 }
 
-type PropertyNodeFunc func(io.Writer) error
+type Property func(io.Writer) error
 
-func (p PropertyNodeFunc) RenderCSS(w io.Writer) error {
+func (p Property) RenderCSS(w io.Writer) error {
 	return p(w)
 }
 
-func (p PropertyNodeFunc) String() string {
+func (p Property) String() string {
 	var b strings.Builder
 	_ = p.RenderCSS(&b)
 	return b.String()
 }
 
-func (p PropertyNodeFunc) propertyNode() {}
+func (p Property) propertyNode() {}
 
-func Property(name string, values ...ValueNode) PropertyNodeFunc {
-	return PropertyNodeFunc(func(w io.Writer) error {
+func Prop(name string, values ...ValueNode) Property {
+	return Property(func(w io.Writer) error {
 		if _, err := w.Write([]byte(name + ":")); err != nil {
 			return err
 		}
@@ -50,8 +50,8 @@ func Property(name string, values ...ValueNode) PropertyNodeFunc {
 	})
 }
 
-func GroupProps(props ...PropertyNode) PropertyNodeFunc {
-	return PropertyNodeFunc(func(w io.Writer) error {
+func GroupProps(props ...PropertyNode) Property {
+	return Property(func(w io.Writer) error {
 		for _, prop := range props {
 			if err := prop.RenderCSS(w); err != nil {
 				return err
@@ -61,34 +61,34 @@ func GroupProps(props ...PropertyNode) PropertyNodeFunc {
 	})
 }
 
-func TextColor(value ColorValue) PropertyNodeFunc {
-	return Property("color", value)
+func TextColor(value ColorValue) Property {
+	return Prop("color", value)
 }
 
-func BackgroundColor(value ColorValue) PropertyNodeFunc {
-	return Property("background-color", value)
+func BackgroundColor(value ColorValue) Property {
+	return Prop("background-color", value)
 }
 
-func FontSize(value SizeValue) PropertyNodeFunc {
-	return Property("font-size", value)
+func FontSize(value SizeValue) Property {
+	return Prop("font-size", value)
 }
 
-func Margin(value1, value2, value3, value4 SizeValue) PropertyNodeFunc {
-	return Property("margin", value1, value2, value3, value4)
+func Margin(value1, value2, value3, value4 SizeValue) Property {
+	return Prop("margin", value1, value2, value3, value4)
 }
 
-func Padding(value1, value2, value3, value4 SizeValue) PropertyNodeFunc {
-	return Property("padding", value1, value2, value3, value4)
+func Padding(value1, value2, value3, value4 SizeValue) Property {
+	return Prop("padding", value1, value2, value3, value4)
 }
 
-func Height(value SizeValue) PropertyNodeFunc {
-	return Property("height", value)
+func Height(value SizeValue) Property {
+	return Prop("height", value)
 }
 
-func Width(value SizeValue) PropertyNodeFunc {
-	return Property("width", value)
+func Width(value SizeValue) Property {
+	return Prop("width", value)
 }
 
-func Border(width SizeValue, style BorderStyleValue, color ColorValue) PropertyNodeFunc {
-	return Property("border", width, style, color)
+func Border(width SizeValue, style BorderStyleValue, color ColorValue) Property {
+	return Prop("border", width, style, color)
 }
