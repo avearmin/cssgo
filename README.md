@@ -66,8 +66,8 @@ func CardComponent(title, content string) g.Node {
 			c.Width(c.PX(300)),
 			c.Height(c.PX(200)),
 			c.BackgroundColor(c.White),
-			c.Border(c.PX(2), c.Solid, c.Hex(0xcccccc)),
-			c.Padding(c.PX(20), nil, nil, nil),
+			c.Border3(c.PX(2), c.Solid, c.Hex(0xcccccc)),
+			c.Padding1(c.PX(20)),
 		),
 		ghtml.H2(
 			g.Text(title),
@@ -115,7 +115,7 @@ func StyledButtonComponent() g.Node {
 		c.El("button").Or(c.Class("foo")).Props(
 			c.BackgroundColor(c.Blue),
 			c.TextColor(c.White),
-			c.Padding(c.PX(10), c.PX(20), nil, nil),
+			c.Padding2(c.PX(10), c.PX(20)),
 		),
 	)
 }
@@ -146,8 +146,8 @@ func CardComponent(title, content string) g.Node {
 		c.Width(c.PX(300)),
 		c.Height(cssgo.PX(200)),
 		c.BackgroundColor(c.White),
-		c.Border(c.PX(2), c.Solid, c.Hex(0xcccccc)),
-		c.Padding(c.PX(20), nil, nil, nil),
+		c.Border3(c.PX(2), c.Solid, c.Hex(0xcccccc)),
+		c.Padding1(c.PX(20)),
 	)
 
 	return ghtml.Div(
