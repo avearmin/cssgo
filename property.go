@@ -52,9 +52,6 @@ func Prop(name string, values ...ValueNode) Property {
 		}
 
 		for _, value := range values {
-			if value == nil {
-				continue
-			}
 			if _, err := w.Write([]byte(" ")); err != nil {
 				return err
 			}
@@ -126,30 +123,6 @@ func FontSize(value SizeValue) Property {
 	return Prop("font-size", value)
 }
 
-// Margin creates a "margin" property with up to four size values.
-// Example: Margin(PX(10), PX(20), nil, nil) -> "margin: 10px 20px;"
-//
-// Parameters:
-// - value1, value2, value3, value4 (SizeValue): The size values for top, right, bottom, and left.
-//
-// Returns:
-// - Property: A Property instance representing the "margin" property.
-func Margin(value1, value2, value3, value4 SizeValue) Property {
-	return Prop("margin", value1, value2, value3, value4)
-}
-
-// Padding creates a "padding" property with up to four size values.
-// Example: Padding(PX(10), PX(20), PX(30), PX(40)) -> "padding: 10px 20px 30px 40px;"
-//
-// Parameters:
-// - value1, value2, value3, value4 (SizeValue): The size values for top, right, bottom, and left.
-//
-// Returns:
-// - Property: A Property instance representing the "padding" property.
-func Padding(value1, value2, value3, value4 SizeValue) Property {
-	return Prop("padding", value1, value2, value3, value4)
-}
-
 // Height creates a "height" property.
 // Example: Height(PX(100)) -> "height: 100px;"
 //
@@ -174,28 +147,203 @@ func Width(value SizeValue) Property {
 	return Prop("width", value)
 }
 
-// Border creates a "border" property with width, style, and color.
-// Example: Border(PX(1), Solid, Black) -> "border: 1px solid black;"
+// Margin1 creates a "margin" property with one value applied to all sides.
+// Example: Margin1(PX(10)) -> "margin: 10px;"
 //
 // Parameters:
-// - width (SizeValue): The width of the border.
-// - style (BorderStyleValue): The style of the border (e.g., "solid", "dotted").
+// - value (SizeValue): The size value for all sides.
+//
+// Returns:
+// - Property: A Property instance representing the "margin" property.
+func Margin1(value SizeValue) Property {
+	return Prop("margin", value)
+}
+
+// Margin2 creates a "margin" property with vertical (top/bottom) and horizontal (left/right) values.
+// Example: Margin2(PX(10), PX(20)) -> "margin: 10px 20px;"
+//
+// Parameters:
+// - vertical (SizeValue): The size value for top and bottom.
+// - horizontal (SizeValue): The size value for left and right.
+//
+// Returns:
+// - Property: A Property instance representing the "margin" property.
+func Margin2(vertical, horizontal SizeValue) Property {
+	return Prop("margin", vertical, horizontal)
+}
+
+// Margin3 creates a "margin" property with top, horizontal (left/right), and bottom values.
+// Example: Margin3(PX(10), PX(20), PX(30)) -> "margin: 10px 20px 30px;"
+//
+// Parameters:
+// - top (SizeValue): The size value for the top.
+// - horizontal (SizeValue): The size value for left and right.
+// - bottom (SizeValue): The size value for the bottom.
+//
+// Returns:
+// - Property: A Property instance representing the "margin" property.
+func Margin3(top, horizontal, bottom SizeValue) Property {
+	return Prop("margin", top, horizontal, bottom)
+}
+
+// Margin4 creates a "margin" property with separate values for top, right, bottom, and left.
+// Example: Margin4(PX(10), PX(20), PX(30), PX(40)) -> "margin: 10px 20px 30px 40px;"
+//
+// Parameters:
+// - top (SizeValue): The size value for the top.
+// - right (SizeValue): The size value for the right.
+// - bottom (SizeValue): The size value for the bottom.
+// - left (SizeValue): The size value for the left.
+//
+// Returns:
+// - Property: A Property instance representing the "margin" property.
+func Margin4(top, right, bottom, left SizeValue) Property {
+	return Prop("margin", top, right, bottom, left)
+}
+
+// Padding1 creates a "padding" property with one value applied to all sides.
+// Example: Padding1(PX(10)) -> "padding: 10px;"
+//
+// Parameters:
+// - value (SizeValue): The size value for all sides.
+//
+// Returns:
+// - Property: A Property instance representing the "padding" property.
+func Padding1(value SizeValue) Property {
+	return Prop("padding", value)
+}
+
+// Padding2 creates a "padding" property with vertical (top/bottom) and horizontal (left/right) values.
+// Example: Padding2(PX(10), PX(20)) -> "padding: 10px 20px;"
+//
+// Parameters:
+// - vertical (SizeValue): The size value for top and bottom.
+// - horizontal (SizeValue): The size value for left and right.
+//
+// Returns:
+// - Property: A Property instance representing the "padding" property.
+func Padding2(vertical, horizontal SizeValue) Property {
+	return Prop("padding", vertical, horizontal)
+}
+
+// Padding3 creates a "padding" property with top, horizontal (left/right), and bottom values.
+// Example: Padding3(PX(10), PX(20), PX(30)) -> "padding: 10px 20px 30px;"
+//
+// Parameters:
+// - top (SizeValue): The size value for the top.
+// - horizontal (SizeValue): The size value for left and right.
+// - bottom (SizeValue): The size value for the bottom.
+//
+// Returns:
+// - Property: A Property instance representing the "padding" property.
+func Padding3(top, horizontal, bottom SizeValue) Property {
+	return Prop("padding", top, horizontal, bottom)
+}
+
+// Padding4 creates a "padding" property with separate values for top, right, bottom, and left.
+// Example: Padding4(PX(10), PX(20), PX(30), PX(40)) -> "padding: 10px 20px 30px 40px;"
+//
+// Parameters:
+// - top (SizeValue): The size value for the top.
+// - right (SizeValue): The size value for the right.
+// - bottom (SizeValue): The size value for the bottom.
+// - left (SizeValue): The size value for the left.
+//
+// Returns:
+// - Property: A Property instance representing the "padding" property.
+func Padding4(top, right, bottom, left SizeValue) Property {
+	return Prop("padding", top, right, bottom, left)
+}
+
+// Border1 creates a "border" property with just the border size applied to all sides.
+// Example: Border1(PX(1)) -> "border: 1px;"
+//
+// Parameters:
+// - width (SizeValue): The width of the border for all sides.
+//
+// Returns:
+// - Property: A Property instance representing the "border" property.
+func Border1(width SizeValue) Property {
+	return Prop("border", width)
+}
+
+// Border2 creates a "border" property with size and style applied to all sides.
+// Example: Border2(PX(1), Solid) -> "border: 1px solid;"
+//
+// Parameters:
+// - width (SizeValue): The width of the border for all sides.
+// - style (BorderStyleValue): The style of the border (e.g., Solid, Dashed).
+//
+// Returns:
+// - Property: A Property instance representing the "border" property.
+func Border2(width SizeValue, style BorderStyleValue) Property {
+	return Prop("border", width, style)
+}
+
+// Border3 creates a "border" property with size, style, and color applied to all sides.
+// Example: Border3(PX(1), Solid, Black) -> "border: 1px solid black;"
+//
+// Parameters:
+// - width (SizeValue): The width of the border for all sides.
+// - style (BorderStyleValue): The style of the border (e.g., Solid, Dashed).
 // - color (ColorValue): The color of the border.
 //
 // Returns:
 // - Property: A Property instance representing the "border" property.
-func Border(width SizeValue, style BorderStyleValue, color ColorValue) Property {
+func Border3(width SizeValue, style BorderStyleValue, color ColorValue) Property {
 	return Prop("border", width, style, color)
 }
 
-// BorderStyle creates a "border-style" property that accepts up to 4 BorderStyleValues.
-// Example: BorderStyle(Dotted, Dashed, Solid, Double) -> "border-style: dotted dashed solid double;"
+// BorderStyle1 creates a "border-style" property with one value applied to all sides.
+// Example: BorderStyle1(Solid) -> "border-style: solid;"
 //
 // Parameters:
-// - value1, value2, value3, value4 (BorderStyleValue): The BorderStyleValues for top, right, bottom, and the left border.
+// - value (BorderStyleValue): The border style for all sides.
 //
 // Returns:
 // - Property: A Property instance representing the "border-style" property.
-func BorderStyle(value1, value2, value3, value4 BorderStyleValue) Property {
-	return Prop("border-style", value1, value2, value3, value4)
+func BorderStyle1(value BorderStyleValue) Property {
+	return Prop("border-style", value)
+}
+
+// BorderStyle2 creates a "border-style" property with vertical and horizontal styles.
+// Example: BorderStyle2(Solid, Dashed) -> "border-style: solid dashed;"
+//
+// Parameters:
+// - vertical (BorderStyleValue): The border style for top and bottom.
+// - horizontal (BorderStyleValue): The border style for left and right.
+//
+// Returns:
+// - Property: A Property instance representing the "border-style" property.
+func BorderStyle2(vertical, horizontal BorderStyleValue) Property {
+	return Prop("border-style", vertical, horizontal)
+}
+
+// BorderStyle3 creates a "border-style" property with top, horizontal, and bottom styles.
+// Example: BorderStyle3(Solid, Dashed, Dotted) -> "border-style: solid dashed dotted;"
+//
+// Parameters:
+// - top (BorderStyleValue): The border style for the top.
+// - horizontal (BorderStyleValue): The border style for left and right.
+// - bottom (BorderStyleValue): The border style for the bottom.
+//
+// Returns:
+// - Property: A Property instance representing the "border-style" property.
+func BorderStyle3(top, horizontal, bottom BorderStyleValue) Property {
+	return Prop("border-style", top, horizontal, bottom)
+}
+
+// BorderStyle4 creates a "border-style" property with separate styles for top, right, bottom, and left.
+// Example: BorderStyle4(Solid, Dashed, Dotted, Double) -> "border-style: solid dashed dotted double;"
+//
+// Parameters:
+// - top (BorderStyleValue): The border style for the top.
+// - right (BorderStyleValue): The border style for the right.
+// - bottom (BorderStyleValue): The border style for the bottom.
+// - left (BorderStyleValue): The border style for the left.
+//
+// Returns:
+// - Property: A Property instance representing the "border-style" property.
+func BorderStyle4(top, right, bottom, left BorderStyleValue) Property {
+	return Prop("border-style", top, right, bottom, left)
 }

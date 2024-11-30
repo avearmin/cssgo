@@ -136,22 +136,22 @@ func TestPadding(t *testing.T) {
 	RunTests(t,
 		test{
 			"padding with 1 value",
-			Padding(PX(10), nil, nil, nil),
+			Padding1(PX(10)),
 			"padding: 10px;",
 		},
 		test{
 			"padding with 2 values",
-			Padding(PX(10), PX(20), nil, nil),
+			Padding2(PX(10), PX(20)),
 			"padding: 10px 20px;",
 		},
 		test{
 			"padding with 3 values",
-			Padding(PX(10), PX(20), PX(30), nil),
+			Padding3(PX(10), PX(20), PX(30)),
 			"padding: 10px 20px 30px;",
 		},
 		test{
 			"padding with 4 values",
-			Padding(PX(10), PX(20), PX(30), PX(40)),
+			Padding4(PX(10), PX(20), PX(30), PX(40)),
 			"padding: 10px 20px 30px 40px;",
 		},
 	)
@@ -161,22 +161,22 @@ func TestMargin(t *testing.T) {
 	RunTests(t,
 		test{
 			"margin with 1 value",
-			Margin(PX(10), nil, nil, nil),
+			Margin1(PX(10)),
 			"margin: 10px;",
 		},
 		test{
 			"margin with 2 values",
-			Margin(PX(10), PX(20), nil, nil),
+			Margin2(PX(10), PX(20)),
 			"margin: 10px 20px;",
 		},
 		test{
 			"margin with 3 values",
-			Margin(PX(10), PX(20), PX(30), nil),
+			Margin3(PX(10), PX(20), PX(30)),
 			"margin: 10px 20px 30px;",
 		},
 		test{
 			"margin with 4 values",
-			Margin(PX(10), PX(20), PX(30), PX(40)),
+			Margin4(PX(10), PX(20), PX(30), PX(40)),
 			"margin: 10px 20px 30px 40px;",
 		},
 	)
@@ -225,19 +225,19 @@ func TestWidth(t *testing.T) {
 func TestBorder(t *testing.T) {
 	RunTests(t,
 		test{
-			"border: 5px solid green;",
-			Border(PX(5), Solid, Green),
-			"border: 5px solid green;",
+			"border with only width",
+			Border1(PX(5)),
+			"border: 5px;",
 		},
 		test{
-			"border: dotted #ffffff;",
-			Border(nil, Dotted, Hex(0xffffff)),
-			"border: dotted #ffffff;",
+			"border with width and style",
+			Border2(PX(5), Solid),
+			"border: 5px solid;",
 		},
 		test{
-			"border: dashed;",
-			Border(nil, Dashed, nil),
-			"border: dashed;",
+			"border with width, style, and color",
+			Border3(PX(5), Solid, Green),
+			"border: 5px solid green;",
 		},
 	)
 }
@@ -245,23 +245,23 @@ func TestBorder(t *testing.T) {
 func TestBorderStyle(t *testing.T) {
 	RunTests(t,
 		test{
+			"border-style with 1 value",
+			BorderStyle1(Dotted),
 			"border-style: dotted;",
-			BorderStyle(Dotted, nil, nil, nil),
-			"border-style: dotted;",
 		},
 		test{
-			"border-style: dotted dashed;",
-			BorderStyle(Dotted, Dashed, nil, nil),
+			"border-style with 2 values",
+			BorderStyle2(Dotted, Dashed),
 			"border-style: dotted dashed;",
 		},
 		test{
-			"border-style: dotted dashed double;",
-			BorderStyle(Dotted, Dashed, Double, nil),
+			"border-style with 3 values",
+			BorderStyle3(Dotted, Dashed, Double),
 			"border-style: dotted dashed double;",
 		},
 		test{
-			"border-style: dotted dashed double solid",
-			BorderStyle(Dotted, Dashed, Double, Solid),
+			"border-style with 4 values",
+			BorderStyle4(Dotted, Dashed, Double, Solid),
 			"border-style: dotted dashed double solid;",
 		},
 	)
@@ -271,7 +271,7 @@ func TestGroupProps(t *testing.T) {
 	RunTests(t,
 		test{"border background-color color",
 			GroupProps(
-				Border(PX(10), Inset, Magenta),
+				Border3(PX(10), Inset, Magenta),
 				BackgroundColor(Black),
 				TextColor(Red),
 			),
