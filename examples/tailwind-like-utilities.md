@@ -25,7 +25,7 @@ import (
 
 // Padding utilities
 func P4() c.Property {
-	return c.Padding(c.PX(16), nil, nil, nil) // Tailwind `p-4` = 16px padding
+	return c.Padding1(c.PX(16)) // Tailwind `p-4` = 16px padding
 }
 
 // Tailwind `px-2` = 8px horizontal padding
