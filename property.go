@@ -187,3 +187,15 @@ func Width(value SizeValue) Property {
 func Border(width SizeValue, style BorderStyleValue, color ColorValue) Property {
 	return Prop("border", width, style, color)
 }
+
+// BorderStyle creates a "border-style" property that accepts up to 4 BorderStyleValues.
+// Example: BorderStyle(Dotted, Dashed, Solid, Double) -> "border-style: dotted dashed solid double;"
+//
+// Parameters:
+// - value1, value2, value3, value4 (BorderStyleValue): The BorderStyleValues for top, right, bottom, and the left border.
+//
+// Returns:
+// - Property: A Property instance representing the "border-style" property.
+func BorderStyle(value1, value2, value3, value4 BorderStyleValue) Property {
+	return Prop("border-style", value1, value2, value3, value4)
+}

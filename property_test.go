@@ -242,6 +242,31 @@ func TestBorder(t *testing.T) {
 	)
 }
 
+func TestBorderStyle(t *testing.T) {
+	RunTests(t,
+		test{
+			"border-style: dotted;",
+			BorderStyle(Dotted, nil, nil, nil),
+			"border-style: dotted;",
+		},
+		test{
+			"border-style: dotted dashed;",
+			BorderStyle(Dotted, Dashed, nil, nil),
+			"border-style: dotted dashed;",
+		},
+		test{
+			"border-style: dotted dashed double;",
+			BorderStyle(Dotted, Dashed, Double, nil),
+			"border-style: dotted dashed double;",
+		},
+		test{
+			"border-style: dotted dashed double solid",
+			BorderStyle(Dotted, Dashed, Double, Solid),
+			"border-style: dotted dashed double solid;",
+		},
+	)
+}
+
 func TestGroupProps(t *testing.T) {
 	RunTests(t,
 		test{"border background-color color",

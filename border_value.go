@@ -9,26 +9,26 @@ type BorderStyleValue interface {
 	borderStyleValue()
 }
 
-// BorderStyle represents a CSS border style, such as "solid", "dotted", or "dashed".
+// BorderDisplay represents a CSS border style, such as "solid", "dotted", or "dashed".
 // It is a concrete type that implements the BorderStyleValue interface.
-type BorderStyle string
+type BorderDisplay string
 
 // Predefined border style values as per the CSS specification.
 const (
-	Solid  BorderStyle = "solid"
-	Dotted BorderStyle = "dotted"
-	Dashed BorderStyle = "dashed"
-	Double BorderStyle = "double"
-	Groove BorderStyle = "groove"
-	Ridge  BorderStyle = "ridge"
-	Inset  BorderStyle = "inset"
-	Outset BorderStyle = "outset"
+	Solid  BorderDisplay = "solid"
+	Dotted BorderDisplay = "dotted"
+	Dashed BorderDisplay = "dashed"
+	Double BorderDisplay = "double"
+	Groove BorderDisplay = "groove"
+	Ridge  BorderDisplay = "ridge"
+	Inset  BorderDisplay = "inset"
+	Outset BorderDisplay = "outset"
 )
 
-func (b BorderStyle) RenderCSS(w io.Writer) error {
+func (b BorderDisplay) RenderCSS(w io.Writer) error {
 	_, err := w.Write([]byte(b))
 	return err
 }
 
-func (b BorderStyle) valueNode()        {}
-func (b BorderStyle) borderStyleValue() {}
+func (b BorderDisplay) valueNode()        {}
+func (b BorderDisplay) borderStyleValue() {}
