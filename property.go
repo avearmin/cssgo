@@ -255,6 +255,54 @@ func Padding4(top, right, bottom, left SizeValue) Property {
 	return Prop("padding", top, right, bottom, left)
 }
 
+// PaddingTop creates a "padding-top" property.
+// Example: PaddingTop(PX(10)) -> "padding-top: 10px;"
+//
+// Parameters:
+// - value (SizeValue): The size value for the top padding.
+//
+// Returns:
+// - Property: A Property instance representing the "padding-top" property.
+func PaddingTop(value SizeValue) Property {
+	return Prop("padding-top", value)
+}
+
+// PaddingRight creates a "padding-right" property.
+// Example: PaddingRight(PX(20)) -> "padding-right: 20px;"
+//
+// Parameters:
+// - value (SizeValue): The size value for the right padding.
+//
+// Returns:
+// - Property: A Property instance representing the "padding-right" property.
+func PaddingRight(value SizeValue) Property {
+	return Prop("padding-right", value)
+}
+
+// PaddingBottom creates a "padding-bottom" property.
+// Example: PaddingBottom(PX(30)) -> "padding-bottom: 30px;"
+//
+// Parameters:
+// - value (SizeValue): The size value for the bottom padding.
+//
+// Returns:
+// - Property: A Property instance representing the "padding-bottom" property.
+func PaddingBottom(value SizeValue) Property {
+	return Prop("padding-bottom", value)
+}
+
+// PaddingLeft creates a "padding-left" property.
+// Example: PaddingLeft(PX(40)) -> "padding-left: 40px;"
+//
+// Parameters:
+// - value (SizeValue): The size value for the left padding.
+//
+// Returns:
+// - Property: A Property instance representing the "padding-left" property.
+func PaddingLeft(value SizeValue) Property {
+	return Prop("padding-left", value)
+}
+
 // Border1 creates a "border" property with just the border size applied to all sides.
 // Example: Border1(PX(1)) -> "border: 1px;"
 //

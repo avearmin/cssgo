@@ -28,8 +28,12 @@ func P4() c.Property {
 	return c.Padding(c.PX(16), nil, nil, nil) // Tailwind `p-4` = 16px padding
 }
 
+// Tailwind `px-2` = 8px horizontal padding
 func Px2() c.Property {
-	return c.Padding(nil, c.PX(8), nil, c.PX(8)) // Tailwind `px-2` = 8px horizontal padding
+	c.GroupProps (
+		c.PaddingLeft(c.PX(8)), 
+		c.PaddingRight(c.PX(8)), 
+		) 
 }
 
 // Rounded utilities

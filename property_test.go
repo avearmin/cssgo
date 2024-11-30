@@ -157,6 +157,31 @@ func TestPadding(t *testing.T) {
 	)
 }
 
+func TestPaddingDirections(t *testing.T) {
+	RunTests(t,
+		test{
+			"padding-top: 10px",
+			PaddingTop(PX(10)),
+			"padding-top: 10px;",
+		},
+		test{
+			"padding-right: 20px",
+			PaddingRight(PX(20)),
+			"padding-right: 20px;",
+		},
+		test{
+			"padding-bottom: 30px",
+			PaddingBottom(PX(30)),
+			"padding-bottom: 30px;",
+		},
+		test{
+			"padding-left: 40px",
+			PaddingLeft(PX(40)),
+			"padding-left: 40px;",
+		},
+	)
+}
+
 func TestMargin(t *testing.T) {
 	RunTests(t,
 		test{
