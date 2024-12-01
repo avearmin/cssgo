@@ -4,6 +4,19 @@ import (
 	"testing"
 )
 
+func TestGroupProps(t *testing.T) {
+	RunTests(t,
+		test{"border background-color color",
+			GroupProps(
+				Border3(PX(10), Inset, Magenta),
+				BackgroundColor(Black),
+				TextColor(Red),
+			),
+			"border: 10px inset magenta;background-color: black;color: red;",
+		},
+	)
+}
+
 func TestTextColor(t *testing.T) {
 	RunTests(t,
 		test{"named color",
@@ -292,15 +305,92 @@ func TestBorderStyle(t *testing.T) {
 	)
 }
 
-func TestGroupProps(t *testing.T) {
+func TestBorderWidth(t *testing.T) {
 	RunTests(t,
-		test{"border background-color color",
-			GroupProps(
-				Border3(PX(10), Inset, Magenta),
-				BackgroundColor(Black),
-				TextColor(Red),
-			),
-			"border: 10px inset magenta;background-color: black;color: red;",
+		test{
+			"border-width: 10px;",
+			BorderWidth1(PX(10)),
+			"border-width: 10px;",
+		},
+		test{
+			"border-width: thick;",
+			BorderWidth1(Thick),
+			"border-width: thick;",
+		},
+		test{
+			"border-width: 10px 20px;",
+			BorderWidth2(PX(10), PX(20)),
+			"border-width: 10px 20px;",
+		},
+		test{
+			"border-width: thick thin;",
+			BorderWidth2(Thick, Thin),
+			"border-width: thick thin;",
+		},
+		test{
+			"border-width: 10px 20px 30px;",
+			BorderWidth3(PX(10), PX(20), PX(30)),
+			"border-width: 10px 20px 30px;",
+		},
+		test{
+			"border-width: thick thin medium;",
+			BorderWidth3(Thick, Thin, Medium),
+			"border-width: thick thin medium;",
+		},
+		test{
+			"border-width: 10px 20px 30px 40px;",
+			BorderWidth4(PX(10), PX(20), PX(30), PX(40)),
+			"border-width: 10px 20px 30px 40px;",
+		},
+		test{
+			"border-width: thick thin medium thin;",
+			BorderWidth4(Thick, Thin, Medium, Thin),
+			"border-width: thick thin medium thin;",
+		},
+	)
+}
+
+func TestBorderDirectionWidths(t *testing.T) {
+	RunTests(t,
+		test{
+			"border-left-width: 10px;",
+			BorderLeftWidth(PX(10)),
+			"border-left-width: 10px;",
+		},
+		test{
+			"border-left-width: thick;",
+			BorderLeftWidth(Thick),
+			"border-left-width: thick;",
+		},
+		test{
+			"border-right-width: medium;",
+			BorderRightWidth(Medium),
+			"border-right-width: medium;",
+		},
+		test{
+			"border-right-width: 20px;",
+			BorderRightWidth(PX(20)),
+			"border-right-width: 20px;",
+		},
+		test{
+			"border-top-width: 15px;",
+			BorderTopWidth(PX(15)),
+			"border-top-width: 15px;",
+		},
+		test{
+			"border-top-width: thin;",
+			BorderTopWidth(Thin),
+			"border-top-width: thin;",
+		},
+		test{
+			"border-bottom-width: 5px;",
+			BorderBottomWidth(PX(5)),
+			"border-bottom-width: 5px;",
+		},
+		test{
+			"border-bottom-width: thick;",
+			BorderBottomWidth(Thick),
+			"border-bottom-width: thick;",
 		},
 	)
 }

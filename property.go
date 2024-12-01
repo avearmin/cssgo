@@ -311,7 +311,7 @@ func PaddingLeft(value SizeValue) Property {
 //
 // Returns:
 // - Property: A Property instance representing the "border" property.
-func Border1(width SizeValue) Property {
+func Border1(width BorderWidthValue) Property {
 	return Prop("border", width)
 }
 
@@ -324,7 +324,7 @@ func Border1(width SizeValue) Property {
 //
 // Returns:
 // - Property: A Property instance representing the "border" property.
-func Border2(width SizeValue, style BorderStyleValue) Property {
+func Border2(width BorderWidthValue, style BorderStyleValue) Property {
 	return Prop("border", width, style)
 }
 
@@ -338,7 +338,7 @@ func Border2(width SizeValue, style BorderStyleValue) Property {
 //
 // Returns:
 // - Property: A Property instance representing the "border" property.
-func Border3(width SizeValue, style BorderStyleValue, color ColorValue) Property {
+func Border3(width BorderWidthValue, style BorderStyleValue, color ColorValue) Property {
 	return Prop("border", width, style, color)
 }
 
@@ -394,4 +394,106 @@ func BorderStyle3(top, horizontal, bottom BorderStyleValue) Property {
 // - Property: A Property instance representing the "border-style" property.
 func BorderStyle4(top, right, bottom, left BorderStyleValue) Property {
 	return Prop("border-style", top, right, bottom, left)
+}
+
+// BorderWidth1 creates a "border-width" property with a single value applied to all sides.
+// Example: BorderWidth1(PX(10)) -> "border-width: 10px;"
+//
+// Parameters:
+// - value (BorderWidthValue): The border width for all sides.
+//
+// Returns:
+// - Property: A Property instance representing the "border-width" property.
+func BorderWidth1(value BorderWidthValue) Property {
+	return Prop("border-width", value)
+}
+
+// BorderWidth2 creates a "border-width" property with vertical (top/bottom) and horizontal (left/right) values.
+// Example: BorderWidth2(PX(10), PX(20)) -> "border-width: 10px 20px;"
+//
+// Parameters:
+// - vertical (BorderWidthValue): The border width for top and bottom.
+// - horizontal (BorderWidthValue): The border width for left and right.
+//
+// Returns:
+// - Property: A Property instance representing the "border-width" property.
+func BorderWidth2(vertical, horizontal BorderWidthValue) Property {
+	return Prop("border-width", vertical, horizontal)
+}
+
+// BorderWidth3 creates a "border-width" property with top, horizontal (left/right), and bottom values.
+// Example: BorderWidth3(PX(10), PX(20), PX(30)) -> "border-width: 10px 20px 30px;"
+//
+// Parameters:
+// - top (BorderWidthValue): The border width for the top.
+// - horizontal (BorderWidthValue): The border width for left and right.
+// - bottom (BorderWidthValue): The border width for the bottom.
+//
+// Returns:
+// - Property: A Property instance representing the "border-width" property.
+func BorderWidth3(top, horizontal, bottom BorderWidthValue) Property {
+	return Prop("border-width", top, horizontal, bottom)
+}
+
+// BorderWidth4 creates a "border-width" property with separate values for top, right, bottom, and left.
+// Example: BorderWidth4(PX(10), PX(20), PX(30), PX(40)) -> "border-width: 10px 20px 30px 40px;"
+//
+// Parameters:
+// - top (BorderWidthValue): The border width for the top.
+// - right (BorderWidthValue): The border width for the right.
+// - bottom (BorderWidthValue): The border width for the bottom.
+// - left (BorderWidthValue): The border width for the left.
+//
+// Returns:
+// - Property: A Property instance representing the "border-width" property.
+func BorderWidth4(top, right, bottom, left BorderWidthValue) Property {
+	return Prop("border-width", top, right, bottom, left)
+}
+
+// BorderTopWidth creates a "border-top-width" property.
+// Example: BorderTopWidth(Thick) -> "border-top-width: thick;"
+//
+// Parameters:
+// - top (BorderWidthValue): The width value for the top border.
+//
+// Returns:
+// - Property: A Property instance representing the "border-top-width" property.
+func BorderTopWidth(top BorderWidthValue) Property {
+	return Prop("border-top-width", top)
+}
+
+// BorderRightWidth creates a "border-right-width" property.
+// Example: BorderRightWidth(Medium) -> "border-right-width: medium;"
+//
+// Parameters:
+// - right (BorderWidthValue): The width value for the right border.
+//
+// Returns:
+// - Property: A Property instance representing the "border-right-width" property.
+func BorderRightWidth(right BorderWidthValue) Property {
+	return Prop("border-right-width", right)
+}
+
+// BorderBottomWidth creates a "border-bottom-width" property.
+// Example: BorderBottomWidth(PX(10)) -> "border-bottom-width: 10px;"
+//
+// Parameters:
+// - bottom (BorderWidthValue): The width value for the bottom border.
+//
+// Returns:
+// - Property: A Property instance representing the "border-bottom-width" property.
+func BorderBottomWidth(bottom BorderWidthValue) Property {
+	return Prop("border-bottom-width", bottom)
+}
+
+// BorderLeftWidth creates a "border-left-width" property.
+// Example: BorderLeftWidth(Thin) -> "border-left-width: thin;"
+//
+// Parameters:
+// - left (BorderWidthValue): The width value for the left border.
+//
+// Returns:
+// - Property: A Property instance representing the "border-left-width" property.
+func BorderLeftWidth(left BorderWidthValue) Property {
+	return Prop("border-left-width", left)
 }

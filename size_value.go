@@ -13,7 +13,7 @@ type SizeValue interface {
 }
 
 // Size represents a CSS size value (e.g., "10px", "50%", "1.5em").
-// It is a concrete type that implements the SizeValue interface.
+// It is a concrete type that implements the SizeValue and BorderWidthValue interfaces.
 type Size string
 
 func (s Size) RenderCSS(w io.Writer) error {
@@ -21,8 +21,9 @@ func (s Size) RenderCSS(w io.Writer) error {
 	return err
 }
 
-func (s Size) valueNode() {}
-func (s Size) sizeValue() {}
+func (s Size) valueNode()        {}
+func (s Size) sizeValue()        {}
+func (s Size) borderWidthValue() {}
 
 // size is a helper function that generates a Size value from a float and a unit.
 // It converts the float to a string and appends the unit to form a CSS-compatible size string.
