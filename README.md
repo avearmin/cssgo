@@ -144,7 +144,7 @@ Reuse grouped properties for consistency across components.
 func CardComponent(title, content string) g.Node {
 	cardStyle := c.GroupProps(
 		c.Width(c.PX(300)),
-		c.Height(cssgo.PX(200)),
+		c.Height(c.PX(200)),
 		c.BackgroundColor(c.White),
 		c.Border3(c.PX(2), c.Solid, c.Hex(0xcccccc)),
 		c.Padding1(c.PX(20)),
