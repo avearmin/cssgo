@@ -394,3 +394,28 @@ func TestBorderDirectionWidths(t *testing.T) {
 		},
 	)
 }
+
+func TestBorderColor(t *testing.T) {
+	RunTests(t,
+		test{
+			"border-color with 1 value",
+			BorderColor1(Red),
+			"border-color: red;",
+		},
+		test{
+			"border-color with 2 values",
+			BorderColor2(Red, Blue),
+			"border-color: red blue;",
+		},
+		test{
+			"border-color with 3 values",
+			BorderColor3(Red, Blue, Green),
+			"border-color: red blue green;",
+		},
+		test{
+			"border-color with 4 values",
+			BorderColor4(Red, Blue, Green, Purple),
+			"border-color: red blue green purple;",
+		},
+	)
+}

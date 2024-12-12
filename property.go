@@ -257,3 +257,27 @@ func BorderBottomWidth(bottom BorderWidthValue) Property {
 func BorderLeftWidth(left BorderWidthValue) Property {
 	return Prop("border-left-width", left)
 }
+
+// BorderColor1 creates a "border-color" property with one value applied to all sides.
+// Example: BorderColor1(Red) -> "border-color: red;"
+func BorderColor1(value ColorValue) Property {
+	return Prop("border-color", value)
+}
+
+// BorderColor2 creates a "border-color" property with vertical (top/bottom) and horizontal (left/right) values.
+// Example: BorderColor2(Red, Blue) -> "border-color: red blue;"
+func BorderColor2(vertical, horizontal ColorValue) Property {
+	return Prop("border-color", vertical, horizontal)
+}
+
+// BorderColor3 creates a "border-color" property with top, horizontal (left/right), and bottom values.
+// Example: BorderColor3(Red, Blue, Green) -> "border-color: red blue green;"
+func BorderColor3(top, horizontal, bottom ColorValue) Property {
+	return Prop("border-color", top, horizontal, bottom)
+}
+
+// BorderColor4 creates a "border-color" property with separate values for top, right, bottom, and left.
+// Example: BorderColor4(Red, Blue, Green, Purple) -> "border-color: red blue green purple;"
+func BorderColor4(top, right, bottom, left ColorValue) Property {
+	return Prop("border-color", top, right, bottom, left)
+}
