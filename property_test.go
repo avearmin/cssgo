@@ -489,3 +489,23 @@ func TestLineHeight(t *testing.T) {
 		},
 	)
 }
+
+func TestLetterSpacing(t *testing.T) {
+	RunTests(t,
+		test{
+			"letter-spacing in px",
+			LetterSpacing(PX(2)),
+			"letter-spacing: 2px;",
+		},
+		test{
+			"letter-spacing in em",
+			LetterSpacing(EM(0.1)),
+			"letter-spacing: 0.1em;",
+		},
+		test{
+			"letter-spacing in percent",
+			LetterSpacing(PCT(5)),
+			"letter-spacing: 5%;",
+		},
+	)
+}

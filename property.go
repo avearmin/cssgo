@@ -337,3 +337,9 @@ func BorderBottomLeftRadius(value SizeValue) Property {
 func LineHeight(value SizeValue) Property {
 	return Prop("line-height", value)
 }
+
+// LetterSpacing sets the letter-spacing property using a SizeValue.
+// Example: LetterSpacing(PX(2)) -> "letter-spacing: 2px;"
+func LetterSpacing(value SizeValue) Property {
+	return Prop("letter-spacing", value)
+}
