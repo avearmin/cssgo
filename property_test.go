@@ -469,3 +469,23 @@ func TestBorderRadiusCorners(t *testing.T) {
 		},
 	)
 }
+
+func TestLineHeight(t *testing.T) {
+	RunTests(t,
+		test{
+			"line-height in px",
+			LineHeight(PX(16)),
+			"line-height: 16px;",
+		},
+		test{
+			"line-height in em",
+			LineHeight(EM(1.5)),
+			"line-height: 1.5em;",
+		},
+		test{
+			"line-height in percent",
+			LineHeight(PCT(120)),
+			"line-height: 120%;",
+		},
+	)
+}

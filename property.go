@@ -331,3 +331,9 @@ func BorderBottomRightRadius(value SizeValue) Property {
 func BorderBottomLeftRadius(value SizeValue) Property {
 	return Prop("border-bottom-left-radius", value)
 }
+
+// LineHeight sets the line-height property using a SizeValue.
+// Example: LineHeight(EM(1.5)) -> "line-height: 1.5em;"
+func LineHeight(value SizeValue) Property {
+	return Prop("line-height", value)
+}
