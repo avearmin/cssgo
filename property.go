@@ -281,3 +281,53 @@ func BorderColor3(top, horizontal, bottom ColorValue) Property {
 func BorderColor4(top, right, bottom, left ColorValue) Property {
 	return Prop("border-color", top, right, bottom, left)
 }
+
+// BorderRadius sets the border-radius on all corners.
+// Example: BorderRadius(PX(5)) -> "border-radius: 5px;"
+func BorderRadius(value SizeValue) Property {
+	return Prop("border-radius", value)
+}
+
+// BorderRadius2 sets the top-left and top-right radii, which also apply
+// to bottom-right and bottom-left respectively if not otherwise specified.
+// Example: BorderRadius2(PX(5), PX(10)) -> "border-radius: 5px 10px;"
+func BorderRadius2(topLeft, topRight SizeValue) Property {
+	return Prop("border-radius", topLeft, topRight)
+}
+
+// BorderRadius3 sets top-left, top-right, and bottom-right radii,
+// with bottom-left defaulting if omitted.
+// Example: BorderRadius3(PX(5), PX(10), PX(15)) -> "border-radius: 5px 10px 15px;"
+func BorderRadius3(topLeft, topRight, bottomRight SizeValue) Property {
+	return Prop("border-radius", topLeft, topRight, bottomRight)
+}
+
+// BorderRadius4 sets all four corners (top-left, top-right, bottom-right, bottom-left).
+// Example: BorderRadius4(PX(5), PX(10), PX(15), PX(20)) -> "border-radius: 5px 10px 15px 20px;"
+func BorderRadius4(topLeft, topRight, bottomRight, bottomLeft SizeValue) Property {
+	return Prop("border-radius", topLeft, topRight, bottomRight, bottomLeft)
+}
+
+// BorderTopLeftRadius sets only the top-left corner radius.
+// Example: BorderTopLeftRadius(PX(5)) -> "border-top-left-radius: 5px;"
+func BorderTopLeftRadius(value SizeValue) Property {
+	return Prop("border-top-left-radius", value)
+}
+
+// BorderTopRightRadius sets only the top-right corner radius.
+// Example: BorderTopRightRadius(PX(5)) -> "border-top-right-radius: 5px;"
+func BorderTopRightRadius(value SizeValue) Property {
+	return Prop("border-top-right-radius", value)
+}
+
+// BorderBottomRightRadius sets only the bottom-right corner radius.
+// Example: BorderBottomRightRadius(PX(5)) -> "border-bottom-right-radius: 5px;"
+func BorderBottomRightRadius(value SizeValue) Property {
+	return Prop("border-bottom-right-radius", value)
+}
+
+// BorderBottomLeftRadius sets only the bottom-left corner radius.
+// Example: BorderBottomLeftRadius(PX(5)) -> "border-bottom-left-radius: 5px;"
+func BorderBottomLeftRadius(value SizeValue) Property {
+	return Prop("border-bottom-left-radius", value)
+}

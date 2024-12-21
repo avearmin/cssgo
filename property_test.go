@@ -419,3 +419,53 @@ func TestBorderColor(t *testing.T) {
 		},
 	)
 }
+
+func TestBorderRadius(t *testing.T) {
+	RunTests(t,
+		test{
+			"border-radius with 1 value",
+			BorderRadius(PX(5)),
+			"border-radius: 5px;",
+		},
+		test{
+			"border-radius with 2 values",
+			BorderRadius2(PX(5), PX(10)),
+			"border-radius: 5px 10px;",
+		},
+		test{
+			"border-radius with 3 values",
+			BorderRadius3(PX(5), PX(10), PX(15)),
+			"border-radius: 5px 10px 15px;",
+		},
+		test{
+			"border-radius with 4 values",
+			BorderRadius4(PX(5), PX(10), PX(15), PX(20)),
+			"border-radius: 5px 10px 15px 20px;",
+		},
+	)
+}
+
+func TestBorderRadiusCorners(t *testing.T) {
+	RunTests(t,
+		test{
+			"border-top-left-radius: 5px;",
+			BorderTopLeftRadius(PX(5)),
+			"border-top-left-radius: 5px;",
+		},
+		test{
+			"border-top-right-radius: 10px;",
+			BorderTopRightRadius(PX(10)),
+			"border-top-right-radius: 10px;",
+		},
+		test{
+			"border-bottom-right-radius: 15px;",
+			BorderBottomRightRadius(PX(15)),
+			"border-bottom-right-radius: 15px;",
+		},
+		test{
+			"border-bottom-left-radius: 20px;",
+			BorderBottomLeftRadius(PX(20)),
+			"border-bottom-left-radius: 20px;",
+		},
+	)
+}
