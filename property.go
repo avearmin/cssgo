@@ -349,3 +349,9 @@ func LineHeight(value SizeValue) Property {
 func LetterSpacing(value SizeValue) Property {
 	return Prop("letter-spacing", value)
 }
+
+// Display creates a "display" property using a DisplayValue.
+// Example: Display(Flex) - > "display: flex;"
+func Display(value DisplayValue) Property {
+	return Prop("display", value)
+}

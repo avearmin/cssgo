@@ -539,3 +539,103 @@ func TestLetterSpacing(t *testing.T) {
 		},
 	)
 }
+
+func TestDisplay(t *testing.T) {
+	RunTests(t,
+		test{
+			"Display block",
+			Display(Block),
+			"display: block;",
+		},
+		test{
+			"Display inline",
+			Display(Inline),
+			"display: inline;",
+		},
+		test{
+			"Display inline-block",
+			Display(InlineBlock),
+			"display: inline-block;",
+		},
+		test{
+			"Display flex",
+			Display(Flex),
+			"display: flex;",
+		},
+		test{
+			"Display grid",
+			Display(Grid),
+			"display: grid;",
+		},
+		test{
+			"Display inline-flex",
+			Display(InlineFlex),
+			"display: inline-flex;",
+		},
+		test{
+			"Display inline-grid",
+			Display(InlineGrid),
+			"display: inline-grid;",
+		},
+		test{
+			"Display table",
+			Display(Table),
+			"display: table;",
+		},
+		test{
+			"Display table-row",
+			Display(TableRow),
+			"display: table-row;",
+		},
+		test{
+			"Display table-cell",
+			Display(TableCell),
+			"display: table-cell;",
+		},
+		test{
+			"Display list-item",
+			Display(ListItem),
+			"display: list-item;",
+		},
+		test{
+			"Display run-in",
+			Display(RunIn),
+			"display: run-in;",
+		},
+		test{
+			"Display flow-root",
+			Display(FlowRoot),
+			"display: flow-root;",
+		},
+		test{
+			"Display contents",
+			Display(Contents),
+			"display: contents;",
+		},
+		test{
+			"Display table-column",
+			Display(TableColumn),
+			"display: table-column;",
+		},
+		test{
+			"Display table-column-group",
+			Display(TableColumnGroup),
+			"display: table-column-group;",
+		},
+		test{
+			"Display table-header-group",
+			Display(TableHeaderGroup),
+			"display: table-header-group;",
+		},
+		test{
+			"Display table-footer-group",
+			Display(TableFooterGroup),
+			"display: table-footer-group;",
+		},
+		test{
+			"Display table-row-group",
+			Display(TableRowGroup),
+			"display: table-row-group;",
+		},
+	)
+}
