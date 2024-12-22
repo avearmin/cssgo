@@ -75,6 +75,36 @@ func TestBackgroundColor(t *testing.T) {
 	)
 }
 
+func TestAccentColor(t *testing.T) {
+	RunTests(t,
+		test{
+			"named color",
+			AccentColor(Red),
+			"accent-color: red;",
+		},
+		test{
+			"rgb color",
+			AccentColor(RGB(40, 50, 60)),
+			"accent-color: rgb(40, 50, 60);",
+		},
+		test{
+			"hex color",
+			AccentColor(Hex(0xffffff)),
+			"accent-color: #ffffff;",
+		},
+		test{
+			"hsl color",
+			AccentColor(HSL(200, 50, 50)),
+			"accent-color: hsl(200, 50%, 50%);",
+		},
+		test{
+			"hsla color",
+			AccentColor(HSLA(200, 50, 50, 0.5)),
+			"accent-color: hsla(200, 50%, 50%, 0.5);",
+		},
+	)
+}
+
 func TestFontSize(t *testing.T) {
 	RunTests(t,
 		test{

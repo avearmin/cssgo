@@ -78,6 +78,12 @@ func BackgroundColor(value ColorValue) Property {
 	return Prop("background-color", value)
 }
 
+// AccentColor creates an "accent-color" property.
+// Example: AccentColor(Red) -> "accent-color: red;"
+func AccentColor(value ColorValue) Property {
+	return Prop("accent-color", value)
+}
+
 // FontSize creates a "font-size" property.
 // Example: FontSize(PX(16)) -> "font-size: 16px;"
 func FontSize(value SizeValue) Property {
