@@ -355,3 +355,9 @@ func LetterSpacing(value SizeValue) Property {
 func Display(value DisplayValue) Property {
 	return Prop("display", value)
 }
+
+// FlexDirection creates a "flex-direction" property using a FlexDirectionValue.
+// Example: FlexDirection(RowReverse) -> "flex-direction: row-reverse;"
+func FlexDirection(value FlexDirectionValue) Property {
+	return Prop("flex-direction", value)
+}

@@ -18,8 +18,8 @@ func (f FlexDirectionType) RenderCSS(w io.Writer) error {
 	return err
 }
 
-func (f FlexDirectionType) valueNode()        {}
-func (f FlexDirectionType) borderStyleValue() {}
+func (f FlexDirectionType) valueNode()          {}
+func (f FlexDirectionType) flexDirectionValue() {}
 
 // Predefined flex direction values as per the CSS specification.
 const (

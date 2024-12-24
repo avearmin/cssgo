@@ -639,3 +639,28 @@ func TestDisplay(t *testing.T) {
 		},
 	)
 }
+
+func TestFlexDirection(t *testing.T) {
+	RunTests(t,
+		test{
+			"FlexDirection row",
+			FlexDirection(Row),
+			"flex-direction: row;",
+		},
+		test{
+			"FlexDirection row-reverse",
+			FlexDirection(RowReverse),
+			"flex-direction: row-reverse;",
+		},
+		test{
+			"FlexDirection column",
+			FlexDirection(Column),
+			"flex-direction: column;",
+		},
+		test{
+			"FlexDirection column-reverse",
+			FlexDirection(ColumnReverse),
+			"flex-direction: column-reverse;",
+		},
+	)
+}
