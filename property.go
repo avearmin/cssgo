@@ -342,13 +342,7 @@ func BorderBottomLeftRadius(value SizeValue) Property {
 // Example: ZIndex(-1) -> "z-index: -1;"
 // TODO: clean this up
 func ZIndex[IntOrAuto int | AutoType](value IntOrAuto) Property {
-	if intValue, ok := any(value).(int); ok {
-		value := intToCSS(intValue)
-		return Prop("z-index", value)
-	} else if autoValue, ok := any(value).(AutoType); ok {
-		return Prop("z-index", autoValue)
-	}
-	return Prop("z-index", intToCSS(0))
+	return Prop("z-index", toCSS(value))	
 }
 
 // LineHeight sets the line-height property using a SizeValue.

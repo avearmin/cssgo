@@ -21,7 +21,7 @@ func (g goType) RenderCSS(w io.Writer) error {
 
 func (g goType) valueNode() {}
 
-// intToCss adapts Go ints to be written as CSS properties.
-func intToCSS(val int) goType {
-	return goType(fmt.Sprintf("%d", val))
+// toCSS adapts Go values to be written as values for CSS properties.
+func toCSS(val any) goType {
+	return goType(fmt.Sprintf("%v", val))
 }
