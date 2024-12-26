@@ -338,6 +338,19 @@ func BorderBottomLeftRadius(value SizeValue) Property {
 	return Prop("border-bottom-left-radius", value)
 }
 
+// ZIndex specifies the stack order of an element (which element should be placed in front of, or behind, the others).
+// Example: ZIndex(-1) -> "z-index: -1;"
+// TODO: clean this up
+func ZIndex[IntOrAuto int | AutoType](value IntOrAuto) Property {
+	if intValue, ok := any(value).(int); ok {
+		value := intToCSS(intValue)
+		return Prop("z-index", value)
+	} else if autoValue, ok := any(value).(AutoType); ok {
+		return Prop("z-index", autoValue)
+	}
+	return Prop("z-index", intToCSS(0))
+}
+
 // LineHeight sets the line-height property using a SizeValue.
 // Example: LineHeight(EM(1.5)) -> "line-height: 1.5em;"
 func LineHeight(value SizeValue) Property {

@@ -664,3 +664,23 @@ func TestFlexDirection(t *testing.T) {
 		},
 	)
 }
+
+func TestZIndex(t *testing.T) {
+	RunTests(t,
+		test{
+			"ZIndex -7",
+			ZIndex(-7),
+			"z-index: -7;",
+		},
+		test{
+			"ZIndex 7",
+			ZIndex(7),
+			"z-index: 7;",
+		},
+		test{
+			"ZIndex auto",
+			ZIndex(Auto),
+			"z-index: auto;",
+		},
+	)
+}
