@@ -342,7 +342,7 @@ func BorderBottomLeftRadius(value SizeValue) Property {
 // Example: ZIndex(-1) -> "z-index: -1;"
 // TODO: clean this up
 func ZIndex[IntOrAuto int | AutoType](value IntOrAuto) Property {
-	return Prop("z-index", toCSS(value))	
+	return Prop("z-index", toCSS(value))
 }
 
 // LineHeight sets the line-height property using a SizeValue.
@@ -367,4 +367,10 @@ func Display(value DisplayValue) Property {
 // Example: FlexDirection(RowReverse) -> "flex-direction: row-reverse;"
 func FlexDirection(value FlexDirectionValue) Property {
 	return Prop("flex-direction", value)
+}
+
+// BackgroundImage creates a "background-image" property using a UrlValue.
+// Example: BackgroundImage(Url("images/background.png")) -> "background-image: url('images/background.png');"
+func BackgroundImage(value UrlValue) Property {
+	return Prop("background-image", value)
 }

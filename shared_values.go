@@ -12,21 +12,21 @@ func (g GlobalType) RenderCSS(w io.Writer) error {
 	return err
 }
 
-func (g GlobalType) valueNode() {}
-func (g GlobalType) colorValue() {}
-func (g GlobalType) sizeValue() {}
-func (g GlobalType) displayValue() {} 
-func (g GlobalType) borderStyleValue() {}
-func (g GlobalType) borderWidthValue() {}
+func (g GlobalType) valueNode()          {}
+func (g GlobalType) colorValue()         {}
+func (g GlobalType) sizeValue()          {}
+func (g GlobalType) displayValue()       {}
+func (g GlobalType) borderStyleValue()   {}
+func (g GlobalType) borderWidthValue()   {}
 func (g GlobalType) flexDirectionValue() {}
+func (g GlobalType) urlValue()           {}
 
 const (
 	Inherit GlobalType = "inherit"
 	Initial GlobalType = "initial"
-	Unset GlobalType = "unset"
-	Revert GlobalType = "revert"
+	Unset   GlobalType = "unset"
+	Revert  GlobalType = "revert"
 )
-
 
 // AutoType represents the CSS `auto` value.
 type AutoType string
@@ -37,5 +37,6 @@ func (a AutoType) RenderCSS(w io.Writer) error {
 }
 
 func (a AutoType) valueNode() {}
+func (a AutoType) sizeValue() {}
 
 const Auto AutoType = "auto"

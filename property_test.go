@@ -112,7 +112,6 @@ func TestBackgroundColor(t *testing.T) {
 			BackgroundColor(Unset),
 			"background-color: unset;",
 		},
-
 	)
 }
 
@@ -163,7 +162,6 @@ func TestAccentColor(t *testing.T) {
 			AccentColor(Unset),
 			"accent-color: unset;",
 		},
-
 	)
 }
 
@@ -763,6 +761,36 @@ func TestZIndex(t *testing.T) {
 			"ZIndex auto",
 			ZIndex(Auto),
 			"z-index: auto;",
+		},
+	)
+}
+
+func TestBackgroundImage(t *testing.T) {
+	RunTests(t,
+		test{
+			"background-image test/example.png",
+			BackgroundImage(Url("test/example.png")),
+			"background-image: url('test/example.png');",
+		},
+		test{
+			"intial background-image",
+			BackgroundImage(Initial),
+			"background-image: initial;",
+		},
+		test{
+			"inherit background-image",
+			BackgroundImage(Inherit),
+			"background-image: inherit;",
+		},
+		test{
+			"revert background-image",
+			BackgroundImage(Revert),
+			"background-image: revert;",
+		},
+		test{
+			"unset background-image",
+			BackgroundImage(Unset),
+			"background-image: unset;",
 		},
 	)
 }
