@@ -43,6 +43,26 @@ func TestTextColor(t *testing.T) {
 			TextColor(HSLA(200, 50, 50, .5)),
 			"color: hsla(200, 50%, 50%, 0.5);",
 		},
+		test{
+			"intial color",
+			TextColor(Initial),
+			"color: initial;",
+		},
+		test{
+			"inherit color",
+			TextColor(Inherit),
+			"color: inherit;",
+		},
+		test{
+			"revert color",
+			TextColor(Revert),
+			"color: revert;",
+		},
+		test{
+			"unset color",
+			TextColor(Unset),
+			"color: unset;",
+		},
 	)
 }
 
@@ -72,6 +92,27 @@ func TestBackgroundColor(t *testing.T) {
 			BackgroundColor(HSLA(200, 50, 50, .5)),
 			"background-color: hsla(200, 50%, 50%, 0.5);",
 		},
+		test{
+			"intial color",
+			BackgroundColor(Initial),
+			"background-color: initial;",
+		},
+		test{
+			"inherit color",
+			BackgroundColor(Inherit),
+			"background-color: inherit;",
+		},
+		test{
+			"revert color",
+			BackgroundColor(Revert),
+			"background-color: revert;",
+		},
+		test{
+			"unset color",
+			BackgroundColor(Unset),
+			"background-color: unset;",
+		},
+
 	)
 }
 
@@ -102,6 +143,27 @@ func TestAccentColor(t *testing.T) {
 			AccentColor(HSLA(200, 50, 50, 0.5)),
 			"accent-color: hsla(200, 50%, 50%, 0.5);",
 		},
+		test{
+			"intial color",
+			AccentColor(Initial),
+			"accent-color: initial;",
+		},
+		test{
+			"inherit color",
+			AccentColor(Inherit),
+			"accent-color: inherit;",
+		},
+		test{
+			"revert color",
+			AccentColor(Revert),
+			"accent-color: revert;",
+		},
+		test{
+			"unset color",
+			AccentColor(Unset),
+			"accent-color: unset;",
+		},
+
 	)
 }
 
@@ -171,6 +233,26 @@ func TestFontSize(t *testing.T) {
 			"fontsize with vmax value",
 			FontSize(VMAX(8)),
 			"font-size: 8vmax;",
+		},
+		test{
+			"intial fontize",
+			FontSize(Initial),
+			"font-size: initial;",
+		},
+		test{
+			"inherit fontsize",
+			FontSize(Inherit),
+			"font-size: inherit;",
+		},
+		test{
+			"revert fontsize",
+			FontSize(Revert),
+			"font-size: revert;",
+		},
+		test{
+			"unset fontsize",
+			FontSize(Unset),
+			"font-size: unset;",
 		},
 	)
 }
